@@ -11,6 +11,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.databinding.DataBindingUtil;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.PagerTabStrip;
@@ -65,11 +66,16 @@ public class MainActivity extends AppCompatActivity implements Callback<NewsRepo
 
     }
 
-
+    public void showFragmentWeb(Fragment fmWeb){
+        FragmentTransaction transaction=getSupportFragmentManager().beginTransaction();
+        transaction.setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right);
+        
+    }
     private void initFragment() {
 //        editSearch=findViewById(R.id.edit_search);
 //        btnsearch=findViewById(R.id.btn_search);
 //        btnsearch.setOnClickListener(this);
+        FragmentTransaction transaction=getSupportFragmentManager().beginTransaction();
         pageadapter = new PageNewsAdapter(getSupportFragmentManager(), news, saved, favorite);
         binding.pager.setAdapter(pageadapter);
         binding.pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
