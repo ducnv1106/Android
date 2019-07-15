@@ -50,4 +50,8 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
             MainActivity mainActivity= (MainActivity) getActivity();
             mainActivity.showFragment(mainActivity.getFmLogin());
     }
+    public void setData(String username,String password){
+        editUsername.setText(username);
+        editPassword.setText(password);
+    }
 }

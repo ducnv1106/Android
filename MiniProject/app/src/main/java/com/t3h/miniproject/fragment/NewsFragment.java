@@ -1,6 +1,7 @@
 package com.t3h.miniproject.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
@@ -11,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.t3h.miniproject.MainActivity;
 import com.t3h.miniproject.NewsAdapter;
 import com.t3h.miniproject.R;
+import com.t3h.miniproject.WebActivity;
+import com.t3h.miniproject.model.Constant;
 import com.t3h.miniproject.model.News;
 
 import java.util.ArrayList;
@@ -87,7 +90,9 @@ public class NewsFragment extends BaseFragment implements NewsAdapter.ItemClickL
 
     @Override
     public void onItemClicked(int position) {
-        Toast.makeText(getContext(), "hello"+position, Toast.LENGTH_SHORT).show();
+        Intent intent=new Intent(getContext(), WebActivity.class);
+        intent.putExtra(Constant.EXTRA_URL,data.get(position).getUrl());
+        startActivity(intent);
     }
 
     @Override

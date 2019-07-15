@@ -9,17 +9,21 @@
         android:orientation="vertical"
         tools:context=".MainActivity">
 
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/pager"
+        <FrameLayout
+            android:id="@+id/pane"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <androidx.viewpager.widget.PagerTabStrip
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/pager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <androidx.viewpager.widget.PagerTabStrip
 
-                android:textSize="15sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                    android:textSize="18sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
 
-        </androidx.viewpager.widget.ViewPager>
-
+            </androidx.viewpager.widget.ViewPager>
+        </FrameLayout>
     </androidx.drawerlayout.widget.DrawerLayout>
 </layout>

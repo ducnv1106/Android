@@ -60,6 +60,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
             case R.id.btn_register:
                 MainActivity main = (MainActivity) getActivity();
                 main.showFragment(main.getFmRegister());
+                main.getFmRegister().setData(edtUsername.getText().toString(),edtPassword.getText().toString()z` `);
                 break;
         }
     }

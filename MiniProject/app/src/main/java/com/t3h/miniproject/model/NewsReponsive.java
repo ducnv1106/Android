@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class NewsReponsive {
 
     @SerializedName("articles")
-    private ArrayList<News>  news;
+    private ArrayList<News> news;
 
     public void setNews(ArrayList<News> news) {
         this.news = news;

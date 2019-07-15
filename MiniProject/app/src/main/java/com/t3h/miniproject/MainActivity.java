@@ -22,7 +22,6 @@ import com.t3h.miniproject.databinding.ActivityMainBinding;
 import com.t3h.miniproject.fragment.FavoriteFragment;
 import com.t3h.miniproject.fragment.NewsFragment;
 import com.t3h.miniproject.fragment.SavedFragment;
-import com.t3h.miniproject.fragment.WebFragment;
 import com.t3h.miniproject.model.News;
 import com.t3h.miniproject.model.NewsReponsive;
 
@@ -33,7 +32,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity implements Callback<NewsReponsive>{
-    private NewsAdapter adapter;
     private PageNewsAdapter pageadapter;
 
     private ProgressDialog progressDialog;
@@ -41,7 +39,6 @@ public class MainActivity extends AppCompatActivity implements Callback<NewsRepo
     private ActivityMainBinding binding;
     private ActionBarDrawerToggle toggle;
     private ArrayList<News> data=new ArrayList<>();
-    private WebFragment webFragment=new WebFragment();
     private SavedFragment saved = new SavedFragment();
     private FavoriteFragment favorite = new FavoriteFragment();
     private NewsFragment news = new NewsFragment();
@@ -69,6 +66,8 @@ public class MainActivity extends AppCompatActivity implements Callback<NewsRepo
     public void showFragmentWeb(Fragment fmWeb){
         FragmentTransaction transaction=getSupportFragmentManager().beginTransaction();
         transaction.setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right);
+        transaction.replace(R.id.pane,fmWeb);
+        transaction.commit();
         
     }
     private void initFragment() {
@@ -154,5 +153,8 @@ public class MainActivity extends AppCompatActivity implements Callback<NewsRepo
     }
 
 
+    @Override
+    public void onBackPressed() {
 
+    }
 }
