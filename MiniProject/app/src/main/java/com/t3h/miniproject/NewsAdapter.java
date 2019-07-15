@@ -20,6 +20,11 @@ import java.util.ArrayList;
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewHolder> {
     private ArrayList<News> data;
     private LayoutInflater inflater;
+    private ItemClickListener itemClickListener;
+
+    public void setItemClickListener(ItemClickListener itemClickListener) {
+        this.itemClickListener = itemClickListener;
+    }
 
     public void setData(ArrayList<News> data) {
         this.data = data;
@@ -38,8 +43,15 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull NewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull NewHolder holder, final int position) {
             holder.bindData(data.get(position));
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    itemClickListener.onItemClicked(position);
+                }
+            });
+
     }
 
     @Override
@@ -67,5 +79,10 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewHolder> {
             Glide.with(img).load(news.getImg()).into(img);
 
         }
+
+    }
+    public interface ItemClickListener{
+        void onItemClicked(int position);
+        void onItemLongClicked(int position);
     }
 }

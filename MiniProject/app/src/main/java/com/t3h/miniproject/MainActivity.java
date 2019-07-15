@@ -3,6 +3,7 @@ package com.t3h.miniproject;
 import android.app.ProgressDialog;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -10,6 +11,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.databinding.DataBindingUtil;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.PagerTabStrip;
 import androidx.viewpager.widget.ViewPager;
@@ -19,6 +21,7 @@ import com.t3h.miniproject.databinding.ActivityMainBinding;
 import com.t3h.miniproject.fragment.FavoriteFragment;
 import com.t3h.miniproject.fragment.NewsFragment;
 import com.t3h.miniproject.fragment.SavedFragment;
+import com.t3h.miniproject.fragment.WebFragment;
 import com.t3h.miniproject.model.News;
 import com.t3h.miniproject.model.NewsReponsive;
 
@@ -28,19 +31,20 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MainActivity extends AppCompatActivity implements Callback<NewsReponsive> {
-    private SavedFragment saved = new SavedFragment();
-    private FavoriteFragment favorite = new FavoriteFragment();
-    private NewsFragment news = new NewsFragment();
+public class MainActivity extends AppCompatActivity implements Callback<NewsReponsive>{
+    private NewsAdapter adapter;
     private PageNewsAdapter pageadapter;
 
     private ProgressDialog progressDialog;
 
-    private RecyclerView lvNews;
     private ActivityMainBinding binding;
     private ActionBarDrawerToggle toggle;
-    private ArrayList<News> data = new ArrayList<>();
-    private NewsAdapter adapter;
+    private ArrayList<News> data=new ArrayList<>();
+    private WebFragment webFragment=new WebFragment();
+    private SavedFragment saved = new SavedFragment();
+    private FavoriteFragment favorite = new FavoriteFragment();
+    private NewsFragment news = new NewsFragment();
+
 
 
     @Override
@@ -56,31 +60,43 @@ public class MainActivity extends AppCompatActivity implements Callback<NewsRepo
 //                R.string.app_name);
 //        binding.drawer.addDrawerListener(toggle);
 //        toggle.syncState();
-        initView();
+
+       initFragment();
 
     }
 
 
-    private void initView() {
+    private void initFragment() {
 //        editSearch=findViewById(R.id.edit_search);
 //        btnsearch=findViewById(R.id.btn_search);
-//        btnsearch.setOnClickListener(this);ư
-//        adapter = new NewsAdapter(this);
-//        lvNews = findViewById(R.id.lv_news);
-//        lvNews.setAdapter(adapter);
-
+//        btnsearch.setOnClickListener(this);
         pageadapter = new PageNewsAdapter(getSupportFragmentManager(), news, saved, favorite);
         binding.pager.setAdapter(pageadapter);
+        binding.pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                Log.v(getClass().getName(),position+"");
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
 
     }
 
     @Override
     public void onResponse(Call<NewsReponsive> call, Response<NewsReponsive> response) {
         data = response.body().getNews();
-        adapter.setData(data);
         progressDialog.dismiss();
-
+        news.setData(data);
+        news.getAdapter().setData(data);
 
     }
 
@@ -91,9 +107,9 @@ public class MainActivity extends AppCompatActivity implements Callback<NewsRepo
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-       if(toggle.onOptionsItemSelected(item)){
-           return true;
-       }
+//       if(toggle.onOptionsItemSelected(item)){
+//           return true;
+//       }
 
         return super.onOptionsItemSelected(item);
     }
@@ -130,6 +146,7 @@ public class MainActivity extends AppCompatActivity implements Callback<NewsRepo
 
         return super.onCreateOptionsMenu(menu);
     }
+
 
 
 }

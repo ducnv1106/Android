@@ -1,6 +1,7 @@
 package com.t3h.miniproject.fragment;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,5 +26,15 @@ public class SavedFragment extends BaseFragment {
         return "Saved";
     }
 
+    @Override
+    public void onPause() {
+        Log.v(getClass().getName(),"onPause");
+        super.onPause();
+    }
 
+    @Override
+    public void onStop() {
+        Log.v(getClass().getName(),"onStop");
+        super.onStop();
+    }
 }
