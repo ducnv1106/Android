@@ -9,21 +9,23 @@
         android:orientation="vertical"
         tools:context=".MainActivity">
 
-        <FrameLayout
+        <LinearLayout
+            android:orientation="vertical"
             android:id="@+id/pane"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+            <com.google.android.material.tabs.TabLayout
+                app:tabIndicatorColor="#EEC751"
+                app:tabTextColor="@color/colorPrimary"
+                android:id="@+id/tab_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
             <androidx.viewpager.widget.ViewPager
                 android:id="@+id/pager"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-                <androidx.viewpager.widget.PagerTabStrip
-
-                    android:textSize="18sp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
 
             </androidx.viewpager.widget.ViewPager>
-        </FrameLayout>
+        </LinearLayout>
     </androidx.drawerlayout.widget.DrawerLayout>
 </layout>

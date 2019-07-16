@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements Callback<NewsRepo
 //        binding.drawer.addDrawerListener(toggle);
 //        toggle.syncState();
 
-       initFragment();
+       initView();
 
     }
 
@@ -70,29 +70,14 @@ public class MainActivity extends AppCompatActivity implements Callback<NewsRepo
         transaction.commit();
         
     }
-    private void initFragment() {
+    private void initView() {
 //        editSearch=findViewById(R.id.edit_search);
 //        btnsearch=findViewById(R.id.btn_search);
 //        btnsearch.setOnClickListener(this);
-        FragmentTransaction transaction=getSupportFragmentManager().beginTransaction();
+
         pageadapter = new PageNewsAdapter(getSupportFragmentManager(), news, saved, favorite);
         binding.pager.setAdapter(pageadapter);
-        binding.pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-                Log.v(getClass().getName(),position+"");
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
+        binding.tabLayout.setupWithViewPager(binding.pager);
 
     }
 
