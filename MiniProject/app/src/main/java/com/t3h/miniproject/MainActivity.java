@@ -43,8 +43,8 @@ public class MainActivity extends AppCompatActivity implements Callback<NewsRepo
     private NewsAdapter adapter;
     private RecyclerView lv_news;
 
-    private SavedFragment saved = new SavedFragment(lv_news,data,adapter);
-    private FavoriteFragment favorite = new FavoriteFragment(lv_news,data,adapter);
+    private SavedFragment saved = new SavedFragment();
+    private FavoriteFragment favorite = new FavoriteFragment();
     private NewsFragment news = new NewsFragment(lv_news,data,adapter);
 
 

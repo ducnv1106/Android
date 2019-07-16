@@ -3,6 +3,7 @@ package com.t3h.miniproject.fragment;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +27,9 @@ import com.t3h.miniproject.model.News;
 import java.util.ArrayList;
 
 public abstract class BaseFragment  extends Fragment implements NewsAdapter.ItemClickListener {
+    public BaseFragment() {
+    }
+
     private RecyclerView lv_news;
     private ArrayList<News> data=new ArrayList<>();
     private NewsAdapter adapter;
@@ -39,6 +43,7 @@ public abstract class BaseFragment  extends Fragment implements NewsAdapter.Item
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        Log.d(getClass().getName(),"onCreateView");
         return inflater.inflate(getLayoutID(), container, false);
     }
 
