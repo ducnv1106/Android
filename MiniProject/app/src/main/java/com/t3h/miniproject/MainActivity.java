@@ -38,10 +38,14 @@ public class MainActivity extends AppCompatActivity implements Callback<NewsRepo
 
     private ActivityMainBinding binding;
     private ActionBarDrawerToggle toggle;
+
     private ArrayList<News> data=new ArrayList<>();
-    private SavedFragment saved = new SavedFragment();
-    private FavoriteFragment favorite = new FavoriteFragment();
-    private NewsFragment news = new NewsFragment();
+    private NewsAdapter adapter;
+    private RecyclerView lv_news;
+
+    private SavedFragment saved = new SavedFragment(lv_news,data,adapter);
+    private FavoriteFragment favorite = new FavoriteFragment(lv_news,data,adapter);
+    private NewsFragment news = new NewsFragment(lv_news,data,adapter);
 
 
 
@@ -137,9 +141,15 @@ public class MainActivity extends AppCompatActivity implements Callback<NewsRepo
         return super.onCreateOptionsMenu(menu);
     }
 
+    public SavedFragment getSaved() {
+        return saved;
+    }
 
-    @Override
-    public void onBackPressed() {
+    public FavoriteFragment getFavorite() {
+        return favorite;
+    }
 
+    public NewsFragment getNews() {
+        return news;
     }
 }

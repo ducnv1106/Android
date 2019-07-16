@@ -11,10 +11,19 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.t3h.miniproject.NewsAdapter;
 import com.t3h.miniproject.R;
+import com.t3h.miniproject.model.News;
+
+import java.util.ArrayList;
 
 public class SavedFragment extends BaseFragment {
+
+    public SavedFragment(RecyclerView lv_news, ArrayList<News> data, NewsAdapter adapter) {
+        super(lv_news, data, adapter);
+    }
 
     @Override
     protected int getLayoutID() {
@@ -26,15 +35,12 @@ public class SavedFragment extends BaseFragment {
         return "Saved";
     }
 
-    @Override
-    public void onPause() {
-        Log.v(getClass().getName(),"onPause");
-        super.onPause();
-    }
+
 
     @Override
-    public void onStop() {
-        Log.v(getClass().getName(),"onStop");
-        super.onStop();
+    protected int getRecycleview() {
+        return R.id.lv_saved;
     }
+
+
 }

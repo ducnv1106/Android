@@ -4,6 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -19,27 +22,15 @@ import com.t3h.miniproject.model.News;
 import java.util.ArrayList;
 
 public class NewsFragment extends BaseFragment implements NewsAdapter.ItemClickListener {
-    private NewsAdapter adapter;
-    private RecyclerView lv_News;
-    private ArrayList<News> data = new ArrayList<>();
-    public NewsFragment() {
-    }
 
-    public NewsFragment(ArrayList<News> data) {
-        this.data = data;
+    public NewsFragment(RecyclerView lv_news, ArrayList<News> data, NewsAdapter adapter) {
+        super(lv_news, data, adapter);
+
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        Log.v(getClass().getName(),"onActivityCrated");
-        super.onActivityCreated(savedInstanceState);
-        adapter = new NewsAdapter(getContext());
-        adapter.setData(data);
-        data.size();
-        lv_News = getActivity().findViewById(R.id.lv_news);
-        lv_News.setAdapter(adapter);
-        adapter.setItemClickListener(this);
-
+    protected int getRecycleview() {
+        return R.id.lv_news;
     }
 
     @Override
@@ -58,45 +49,27 @@ public class NewsFragment extends BaseFragment implements NewsAdapter.ItemClickL
 
     }
 
-    public NewsAdapter getAdapter() {
-        return adapter;
-    }
 
     @Override
-    public void onDestroy() {
-        Log.v(getClass().getName(),"Destroy");
-        super.onDestroy();
+    public void onItemLongClicked(final int position, View v) {
+        PopupMenu menu_save=new PopupMenu(getContext(),v);
+        menu_save.getMenuInflater().inflate(R.menu.menu_save,menu_save.getMenu());
+        menu_save.show();
+        menu_save.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.item_luu:
+                        MainActivity main= (MainActivity) getActivity();
+                        main.getSaved().addData(main.getNews().getData().get(position));
+                        main.getSaved().getAdapter().setData(main.getSaved().getData());
+
+                        break;
+                }
+                return true;
+            }
+        });
     }
 
-    @Override
-    public void onPause() {
-        Log.v(getClass().getName(),"onPause");
-        super.onPause();
-    }
-
-    @Override
-    public void onStop() {
-        Log.v(getClass().getName(),"onStop");
-        super.onStop();
-    }
-
-    public void setAdapter(NewsAdapter adapter) {
-        this.adapter = adapter;
-    }
-
-    public void setData(ArrayList<News> data) {
-        this.data = data;
-    }
-
-    @Override
-    public void onItemClicked(int position) {
-        Intent intent=new Intent(getContext(), WebActivity.class);
-        intent.putExtra(Constant.EXTRA_URL,data.get(position).getUrl());
-        startActivity(intent);
-    }
-
-    @Override
-    public void onItemLongClicked(int position) {
-
-    }
 }
+

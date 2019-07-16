@@ -4,10 +4,24 @@ import android.os.Bundle;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.t3h.miniproject.NewsAdapter;
 import com.t3h.miniproject.R;
+import com.t3h.miniproject.model.News;
+
+import java.util.ArrayList;
 
 public class FavoriteFragment extends BaseFragment {
+    public FavoriteFragment(RecyclerView lv_news, ArrayList<News> data, NewsAdapter adapter) {
+        super(lv_news, data, adapter);
+    }
+
+    @Override
+    protected int getRecycleview() {
+        return R.id.lv_favorite;
+    }
+
     @Override
     protected int getLayoutID() {
         return R.layout.fragment_favorite;
@@ -24,15 +38,5 @@ public class FavoriteFragment extends BaseFragment {
     public String getTitle() {
         return "Favorite";
     }
-    @Override
-    public void onPause() {
-        Log.v(getClass().getName(),"onPause");
-        super.onPause();
-    }
 
-    @Override
-    public void onStop() {
-        Log.v(getClass().getName(),"onStop");
-        super.onStop();
-    }
 }
