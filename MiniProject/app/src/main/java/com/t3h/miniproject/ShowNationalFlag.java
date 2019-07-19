@@ -2,22 +2,15 @@ package com.t3h.miniproject;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.t3h.miniproject.R;
 
 import com.t3h.miniproject.model.NationalFlag;
 
@@ -25,40 +18,41 @@ import java.util.ArrayList;
 
 public class ShowNationalFlag extends DialogFragment implements NationalFlagAdapter.ItemNationalFlagOnClickListener, View.OnClickListener {
     private ImageView imgSreach;
-    private ArrayList<NationalFlag>datasearch=new ArrayList<>();
+    private ArrayList<NationalFlag> datasearch = new ArrayList<>();
     private EditText keylanguage;
     private RecyclerView lv_national;
-    private ArrayList<NationalFlag> data=new ArrayList<>();
+    private ArrayList<NationalFlag> data = new ArrayList<>();
     private NationalFlagAdapter adapter;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.activity_nationalflag,container,false);
+        View view = inflater.inflate(R.layout.activity_nationalflag, container, false);
 
-        lv_national=view.findViewById(R.id.lv_flag);
-        keylanguage=view.findViewById(R.id.edit_keylanguage);
-        imgSreach=view.findViewById(R.id.img_search);
+        lv_national = view.findViewById(R.id.lv_flag);
+        keylanguage = view.findViewById(R.id.edit_keylanguage);
+        imgSreach = view.findViewById(R.id.img_search);
         imgSreach.setOnClickListener(this);
 
-        data.add(new NationalFlag("vietname","vi",R.drawable.ic_vi));
-        data.add(new NationalFlag("malaysia","ms",R.drawable.ic_malaysia));
-        data.add(new NationalFlag("korea","ko",R.drawable.ic_south_korea));
-        data.add(new NationalFlag("japan","ja",R.drawable.ic_japan));
-        data.add(new NationalFlag("indonesia","in",R.drawable.ic_indonesia));
-        data.add(new NationalFlag("france","fr",R.drawable.ic_france));
-        data.add(new NationalFlag("germany","de",R.drawable.ic_germany));
+        data.add(new NationalFlag("vietname", "vi", R.drawable.ic_vi));
+        data.add(new NationalFlag("malaysia", "ms", R.drawable.ic_malaysia));
+        data.add(new NationalFlag("korea", "ko", R.drawable.ic_south_korea));
+        data.add(new NationalFlag("japan", "ja", R.drawable.ic_japan));
+        data.add(new NationalFlag("indonesia", "in", R.drawable.ic_indonesia));
+        data.add(new NationalFlag("france", "fr", R.drawable.ic_france));
+        data.add(new NationalFlag("germany", "de", R.drawable.ic_germany));
 
 
-        adapter=new NationalFlagAdapter(getContext());
+        adapter = new NationalFlagAdapter(getContext());
         adapter.setData(data);
         adapter.setOnClickListener(this);
+
         lv_national.setAdapter(adapter);
+
 
 
         return view;
     }
-
 
 
     public RecyclerView getLv_national() {
@@ -88,11 +82,11 @@ public class ShowNationalFlag extends DialogFragment implements NationalFlagAdap
 
     @Override
     public void onItemNationalFlagClicked(int position) {
-        MainActivity mainActivity= (MainActivity) getActivity();
-        if(datasearch.size()!=0){
+        MainActivity mainActivity = (MainActivity) getActivity();
+        if (datasearch.size() != 0) {
             mainActivity.setItem(datasearch.get(position).getImg());
             mainActivity.setLanguage(datasearch.get(position).getKeylanguage());
-        }else {
+        } else {
             mainActivity.setItem(data.get(position).getImg());
             mainActivity.setLanguage(data.get(position).getKeylanguage());
         }
