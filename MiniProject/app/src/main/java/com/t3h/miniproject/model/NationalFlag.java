@@ -5,10 +5,12 @@ import android.view.MenuItem;
 import androidx.annotation.DrawableRes;
 
 public class NationalFlag {
+    private String keylanguagefull;
     private String keylanguage;
     private int img;
 
-    public NationalFlag(String keylanguage, int img) {
+    public NationalFlag(String keylanguagefull, String keylanguage, int img) {
+        this.keylanguagefull = keylanguagefull;
         this.keylanguage = keylanguage;
         this.img = img;
     }
@@ -27,5 +29,13 @@ public class NationalFlag {
 
     public void setImg(int img) {
         this.img = img;
+    }
+
+    public String getKeylanguagefull() {
+        return keylanguagefull;
+    }
+
+    public void setKeylanguagefull(String keylanguagefull) {
+        this.keylanguagefull = keylanguagefull;
     }
 }

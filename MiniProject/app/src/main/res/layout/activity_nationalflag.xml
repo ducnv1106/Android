@@ -4,6 +4,27 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        android:layout_width="300dp"
+        android:layout_height="40dp">
+        <ImageView
+            android:id="@+id/img_search"
+            android:paddingLeft="10dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_arrow_back_black_24dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:paddingLeft="10dp"
+            android:lines="1"
+            android:hint="Search..."
+            android:id="@+id/edit_keylanguage"
+              android:layout_marginLeft="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
         app:spanCount="3"
         android:paddingHorizontal="10dp"
