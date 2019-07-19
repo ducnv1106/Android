@@ -1,40 +1,28 @@
 package com.t3h.miniproject;
 
-import android.app.Dialog;
-import android.app.FragmentManager;
 import android.app.ProgressDialog;
-import android.content.ClipData;
-import android.graphics.Color;
-import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.Toast;
-import android.widget.Toolbar;
 
 import androidx.annotation.DrawableRes;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager.widget.PagerTabStrip;
-import androidx.viewpager.widget.ViewPager;
 
+import com.t3h.miniproject.Adapter.NewsAdapter;
+import com.t3h.miniproject.Adapter.PageNewsAdapter;
 import com.t3h.miniproject.api.ApiBuilder;
 import com.t3h.miniproject.databinding.ActivityMainBinding;
 
 import com.t3h.miniproject.fragment.FavoriteFragment;
 import com.t3h.miniproject.fragment.NewsFragment;
 import com.t3h.miniproject.fragment.SavedFragment;
-import com.t3h.miniproject.model.NationalFlag;
 import com.t3h.miniproject.model.News;
 import com.t3h.miniproject.model.NewsReponsive;
 
@@ -62,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements Callback<NewsRepo
     private NewsFragment news = new NewsFragment(lv_news,data,adapter);
     private MenuItem item;
 
-    private String language;
+    private String language="vi";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

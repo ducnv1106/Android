@@ -1,4 +1,4 @@
-package com.t3h.miniproject;
+package com.t3h.miniproject.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,11 +8,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.t3h.miniproject.databinding.ActivityItemBinding;
+import com.t3h.miniproject.R;
 import com.t3h.miniproject.model.News;
 
 import java.util.ArrayList;

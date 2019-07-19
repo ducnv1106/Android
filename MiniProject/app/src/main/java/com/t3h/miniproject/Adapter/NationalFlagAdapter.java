@@ -1,8 +1,7 @@
-package com.t3h.miniproject;
+package com.t3h.miniproject.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 

@@ -1,25 +1,18 @@
 package com.t3h.miniproject.fragment;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView;
 
-import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager.widget.PagerTabStrip;
 
-import com.t3h.miniproject.MainActivity;
-import com.t3h.miniproject.NewsAdapter;
-import com.t3h.miniproject.R;
+import com.t3h.miniproject.Adapter.NewsAdapter;
 import com.t3h.miniproject.WebActivity;
 import com.t3h.miniproject.model.Constant;
 import com.t3h.miniproject.model.News;

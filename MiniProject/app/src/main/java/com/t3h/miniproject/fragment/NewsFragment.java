@@ -9,7 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.t3h.miniproject.MainActivity;
-import com.t3h.miniproject.NewsAdapter;
+import com.t3h.miniproject.Adapter.NewsAdapter;
 import com.t3h.miniproject.R;
 import com.t3h.miniproject.model.News;
 

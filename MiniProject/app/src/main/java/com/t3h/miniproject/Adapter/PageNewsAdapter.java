@@ -1,4 +1,4 @@
-package com.t3h.miniproject;
+package com.t3h.miniproject.Adapter;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
