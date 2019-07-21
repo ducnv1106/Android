@@ -12,6 +12,7 @@ import com.t3h.miniproject.databinding.ItemNationalflagBinding;
 import com.t3h.miniproject.model.NationalFlag;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class NationalFlagAdapter extends RecyclerView.Adapter<NationalFlagAdapter.NationalFlagHodler> {
     private ArrayList<NationalFlag> data;
@@ -25,6 +26,7 @@ public class NationalFlagAdapter extends RecyclerView.Adapter<NationalFlagAdapte
     public void setData(ArrayList<NationalFlag> data) {
         this.data = data;
         notifyDataSetChanged();
+
     }
 
     public NationalFlagAdapter(Context context) {

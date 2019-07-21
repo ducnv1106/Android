@@ -9,23 +9,33 @@
         android:orientation="vertical"
         tools:context=".MainActivity">
 
-        <LinearLayout
+        <RelativeLayout
             android:orientation="vertical"
             android:id="@+id/pane"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <com.google.android.material.tabs.TabLayout
-                app:tabIndicatorColor="#EEC751"
-                app:tabTextColor="@color/colorPrimary"
-                android:id="@+id/tab_layout"
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                app:itemIconTint="@drawable/item_listener_navi"
+                app:itemTextColor="@drawable/item_listener_navi"
+                android:layout_alignParentBottom="true"
+                android:id="@+id/nav_view"
+                app:menu="@menu/menu_bottom_navi"
+                android:background="?android:attr/windowBackground"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content">
+            </com.google.android.material.bottomnavigation.BottomNavigationView>
             <androidx.viewpager.widget.ViewPager
+                android:layout_alignParentTop="true"
                 android:id="@+id/pager"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-
             </androidx.viewpager.widget.ViewPager>
-        </LinearLayout>
+        </RelativeLayout>
+
     </androidx.drawerlayout.widget.DrawerLayout>
+
 </layout>

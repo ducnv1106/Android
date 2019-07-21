@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.t3h.miniproject.MainActivity;
 import com.t3h.miniproject.Adapter.NewsAdapter;
 import com.t3h.miniproject.R;
+import com.t3h.miniproject.dao.DataBaseFavorite;
+import com.t3h.miniproject.dao.DataBaseSaved;
 import com.t3h.miniproject.model.News;
 
 import java.util.ArrayList;
@@ -57,13 +59,14 @@ public class NewsFragment extends BaseFragment implements NewsAdapter.ItemClickL
                 MainActivity main= (MainActivity) getActivity();
                 switch (item.getItemId()){
                     case R.id.item_menu_news_saved:
-
+                        DataBaseSaved.getInstance(getContext()).getNewsDao().insert(main.getNews().getData().get(position));
                         main.getSaved().addData(main.getNews().getData().get(position));
                         main.getSaved().getAdapter().setData(main.getSaved().getData());
+
                         break;
                     case R.id.item_menu_news_favorite:
-
-                       main.getFavorite().addData(main.getNews().getData().get(position));
+                        DataBaseFavorite.getInstance(getContext()).getNewsDao().insert(main.getNews().getData().get(position));
+                        main.getFavorite().addData(main.getNews().getData().get(position));
 
                         break;
                 }

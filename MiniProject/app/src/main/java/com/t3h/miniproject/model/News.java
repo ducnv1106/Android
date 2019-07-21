@@ -1,20 +1,32 @@
 package com.t3h.miniproject.model;
 
-import com.google.gson.annotations.SerializedName;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
+import com.google.gson.annotations.SerializedName;
+@Entity(tableName = "news")
 public class News {
+    @PrimaryKey(autoGenerate = true)
+    private int id;
+
+    @ColumnInfo(name = "title")
     @SerializedName("title")
     private String title;
 
+    @ColumnInfo(name = "description")
     @SerializedName("description")
     private String desc;
 
+    @ColumnInfo(name = "url")
     @SerializedName("url")
     private String url;
 
+    @ColumnInfo(name = "urlToImage")
     @SerializedName("urlToImage")
     private String img;
 
+    @ColumnInfo(name = "publishedAt")
     @SerializedName("publishedAt")
     private String date;
 
@@ -56,5 +68,14 @@ public class News {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

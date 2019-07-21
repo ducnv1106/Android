@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.t3h.miniproject.Adapter.NewsAdapter;
 import com.t3h.miniproject.R;
+import com.t3h.miniproject.dao.DataBaseFavorite;
 import com.t3h.miniproject.model.News;
 
 import java.util.ArrayList;
@@ -44,6 +45,7 @@ public class FavoriteFragment extends BaseFragment {
         menu_favorite.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
+                DataBaseFavorite.getInstance(getContext()).getNewsDao().delete(getData().get(position));
                 getData().remove(position);
                 getAdapter().setData(getData());
                 return false;

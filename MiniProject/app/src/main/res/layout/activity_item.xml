@@ -22,11 +22,11 @@
             android:paddingBottom="2dp"
             android:orientation="horizontal">
 
-            <de.hdodenhof.circleimageview.CircleImageView
+            <ImageView
                 android:layout_gravity="center"
                 android:id="@+id/img"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
+                android:layout_width="128dp"
+                android:layout_height="88dp"
                 android:src="@mipmap/ic_launcher" />
 
             <LinearLayout
@@ -40,7 +40,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
-                    android:lines="1"
+                    android:lines="2"
                     android:paddingLeft="20dp"
                     android:text="Title"
                     android:textColor="@color/colorPrimary" />

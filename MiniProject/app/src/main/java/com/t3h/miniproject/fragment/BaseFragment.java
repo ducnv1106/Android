@@ -18,8 +18,11 @@ import com.t3h.miniproject.model.Constant;
 import com.t3h.miniproject.model.News;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public abstract class BaseFragment  extends Fragment implements NewsAdapter.ItemClickListener {
+
+
     public BaseFragment() {
     }
 
@@ -72,7 +75,9 @@ public abstract class BaseFragment  extends Fragment implements NewsAdapter.Item
     }
 
     public void setData(ArrayList<News> data) {
+
         this.data = data;
+
     }
 
     public ArrayList<News> getData() {

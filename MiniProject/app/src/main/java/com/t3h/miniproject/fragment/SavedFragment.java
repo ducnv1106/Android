@@ -1,18 +1,30 @@
 package com.t3h.miniproject.fragment;
 
+import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.PopupMenu;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.t3h.miniproject.Adapter.NewsAdapter;
 import com.t3h.miniproject.R;
+import com.t3h.miniproject.dao.DataBaseSaved;
 import com.t3h.miniproject.model.News;
 
 import java.util.ArrayList;
 
 public class SavedFragment extends BaseFragment {
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return super.onCreateView(inflater, container, savedInstanceState);
+    }
+
     public SavedFragment() {
     }
 
@@ -45,10 +57,14 @@ public class SavedFragment extends BaseFragment {
         menu_saved.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                getData().remove(position);
-                getAdapter().setData(getData());
+                DataBaseSaved.getInstance(getContext()).getNewsDao().delete(getData().get(position));
+                   getData().remove(position);
+                   getAdapter().setData(getData());
+
                 return false;
             }
         });
     }
+
+
 }
