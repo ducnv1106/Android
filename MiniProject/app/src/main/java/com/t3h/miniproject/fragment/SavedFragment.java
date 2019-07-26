@@ -1,10 +1,12 @@
 package com.t3h.miniproject.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.PopupMenu;
 
 import androidx.annotation.NonNull;
@@ -14,23 +16,28 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.t3h.miniproject.Adapter.NewsAdapter;
 import com.t3h.miniproject.R;
 import com.t3h.miniproject.dao.DataBaseSaved;
+import com.t3h.miniproject.model.Constant;
 import com.t3h.miniproject.model.News;
+import com.t3h.miniproject.model.NewsSaved;
 
 import java.util.ArrayList;
 
 public class SavedFragment extends BaseFragment {
+
+    private ArrayList<NewsSaved> data;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 
+    public SavedFragment(RecyclerView lv_news, NewsAdapter adapter) {
+        super(lv_news, adapter);
+    }
+
     public SavedFragment() {
     }
 
-    public SavedFragment(RecyclerView lv_news, ArrayList<News> data, NewsAdapter adapter) {
-        super(lv_news, data, adapter);
-    }
 
     @Override
     protected int getLayoutID() {
@@ -66,5 +73,9 @@ public class SavedFragment extends BaseFragment {
         });
     }
 
-
+    @Override
+    public void onItemClicked(int position) {
+        Intent intent=new Intent(getContext(), WebView.class);
+        intent.putExtra(Constant.EXTRA_PATH,)
+    }
 }

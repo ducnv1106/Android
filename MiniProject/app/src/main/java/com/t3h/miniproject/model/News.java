@@ -5,6 +5,7 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import com.google.gson.annotations.SerializedName;
+
 @Entity(tableName = "news")
 public class News {
     @PrimaryKey(autoGenerate = true)
@@ -78,4 +79,18 @@ public class News {
     public void setId(int id) {
         this.id = id;
     }
+
+    public News(int id, String title, String desc, String url, String img, String date) {
+        this.id = id;
+        this.title = title;
+        this.desc = desc;
+        this.url = url;
+        this.img = img;
+        this.date = date;
+    }
 }
+
+
+
+
+

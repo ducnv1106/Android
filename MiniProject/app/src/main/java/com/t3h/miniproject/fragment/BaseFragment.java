@@ -16,21 +16,26 @@ import com.t3h.miniproject.Adapter.NewsAdapter;
 import com.t3h.miniproject.WebActivity;
 import com.t3h.miniproject.model.Constant;
 import com.t3h.miniproject.model.News;
+import com.t3h.miniproject.model.NewsSaved;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class BaseFragment  extends Fragment implements NewsAdapter.ItemClickListener {
 
+    public BaseFragment(RecyclerView lv_news, NewsAdapter adapter) {
+        this.lv_news = lv_news;
+        this.adapter = adapter;
+    }
 
     public BaseFragment() {
     }
 
     private RecyclerView lv_news;
-    private ArrayList<News> data=new ArrayList<>();
+    private ArrayList<NewsSaved> data=new ArrayList<>();
     private NewsAdapter adapter;
 
-    public BaseFragment(RecyclerView lv_news, ArrayList<News> data, NewsAdapter adapter) {
+    public BaseFragment(RecyclerView lv_news, ArrayList<NewsSaved> data, NewsAdapter adapter) {
         this.lv_news = lv_news;
         this.data = data;
         this.adapter = adapter;
@@ -74,16 +79,17 @@ public abstract class BaseFragment  extends Fragment implements NewsAdapter.Item
         return adapter;
     }
 
-    public void setData(ArrayList<News> data) {
+    public void setData(ArrayList<NewsSaved> data) {
 
         this.data = data;
 
     }
 
-    public ArrayList<News> getData() {
+    public ArrayList<NewsSaved> getData() {
         return data;
     }
-    public void addData(News news){
-        data.add(news);
+    public void addData(NewsSaved saved){
+        data.add(saved);
     }
+
 }

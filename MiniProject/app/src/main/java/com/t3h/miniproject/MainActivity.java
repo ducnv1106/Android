@@ -1,11 +1,12 @@
 package com.t3h.miniproject;
 
+import android.Manifest;
 import android.app.ProgressDialog;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
@@ -22,16 +23,15 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.t3h.miniproject.Adapter.NewsAdapter;
 import com.t3h.miniproject.Adapter.PageNewsAdapter;
 import com.t3h.miniproject.api.ApiBuilder;
-
 import com.t3h.miniproject.dao.DataBaseFavorite;
 import com.t3h.miniproject.dao.DataBaseSaved;
 import com.t3h.miniproject.databinding.ActivityMainBinding;
-
 import com.t3h.miniproject.fragment.FavoriteFragment;
 import com.t3h.miniproject.fragment.NewsFragment;
 import com.t3h.miniproject.fragment.SavedFragment;
 import com.t3h.miniproject.model.News;
 import com.t3h.miniproject.model.NewsReponsive;
+import com.t3h.miniproject.model.NewsSaved;
 
 import java.util.ArrayList;
 
@@ -39,7 +39,13 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MainActivity extends AppCompatActivity implements Callback<NewsReponsive>, BottomNavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements Callback<NewsReponsive>, BottomNavigationView.OnNavigationItemSelectedListener ,DownloadAsync.DownloadCallback{
+    private String path;
+    private final String[] PERMISSIONS = {
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+    };
+
     private PageNewsAdapter pageadapter;
 
     private ProgressDialog progressDialog;
@@ -48,16 +54,16 @@ public class MainActivity extends AppCompatActivity implements Callback<NewsRepo
     private ActivityMainBinding binding;
     private ActionBarDrawerToggle toggle;
 
-    private ArrayList<News> data=new ArrayList<>();
+    private ArrayList<News> data = new ArrayList<>();
     private NewsAdapter adapter;
     private RecyclerView lv_news;
 
     private SavedFragment saved = new SavedFragment();
     private FavoriteFragment favorite = new FavoriteFragment();
-    private NewsFragment news = new NewsFragment(lv_news,data,adapter);
+    private NewsFragment news = new NewsFragment(lv_news, data, adapter);
     private MenuItem item;
 
-    private String language="vi";
+    private String language = "vi";
 
     private MenuItem myMenuItem;
 
@@ -75,18 +81,50 @@ public class MainActivity extends AppCompatActivity implements Callback<NewsRepo
 //                R.string.app_name);
 //        binding.drawer.addDrawerListener(toggle);
 //        toggle.syncState();
-       initView();
+        if (checkPermission() == true) {
+            initView();
+        }else {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                requestPermissions(PERMISSIONS, 0);
+            }
+        }
+
         bindDataFragment();
+
+    }
+    private boolean checkPermission(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            for (String p : PERMISSIONS) {
+                int check = checkSelfPermission(p);
+                if (check != PackageManager.PERMISSION_GRANTED){
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
-    public void showFragmentWeb(Fragment fmWeb){
-        FragmentTransaction transaction=getSupportFragmentManager().beginTransaction();
-        transaction.setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right);
-        transaction.replace(R.id.pane,fmWeb);
-        transaction.commit();
-        
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (checkPermission()){
+            initView();
+        }else {
+            finish();
+        }
     }
+
+    public void showFragmentWeb(Fragment fmWeb) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+        transaction.replace(R.id.pane, fmWeb);
+        transaction.commit();
+
+    }
+
     private void initView() {
+
 //        editSearch=findViewById(R.id.edit_search);
 //        btnsearch=findViewById(R.id.btn_search);
 //        btnsearch.setOnClickListener(this);
@@ -101,13 +139,13 @@ public class MainActivity extends AppCompatActivity implements Callback<NewsRepo
 
             @Override
             public void onPageSelected(int position) {
-                if(myMenuItem!=null){
+                if (myMenuItem != null) {
                     myMenuItem.setChecked(false);
-                }else {
+                } else {
                     binding.navView.getMenu().getItem(0).setChecked(true);
                 }
                 binding.navView.getMenu().getItem(position).setChecked(true);
-                myMenuItem=binding.navView.getMenu().getItem(position);
+                myMenuItem = binding.navView.getMenu().getItem(position);
             }
 
             @Override
@@ -135,9 +173,10 @@ public class MainActivity extends AppCompatActivity implements Callback<NewsRepo
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId()==R.id.icon_flag){
-           ShowNationalFlag show=new ShowNationalFlag();
-           show.show(getSupportFragmentManager(),"show");
+        if (item.getItemId() == R.id.icon_flag) {
+            ShowNationalFlag show = new ShowNationalFlag();
+            show.show(getSupportFragmentManager(), "show");
+
 
         }
 
@@ -148,7 +187,7 @@ public class MainActivity extends AppCompatActivity implements Callback<NewsRepo
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.searchview, menu);
-        item =menu.findItem(R.id.icon_flag);
+        item = menu.findItem(R.id.icon_flag);
         final SearchView searchView = (SearchView) menu.findItem(R.id.menusearch).getActionView();
         searchView.setQueryHint("Search...");
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -166,6 +205,7 @@ public class MainActivity extends AppCompatActivity implements Callback<NewsRepo
                 }
                 ;
                 return false;
+
             }
 
             @Override
@@ -191,8 +231,7 @@ public class MainActivity extends AppCompatActivity implements Callback<NewsRepo
     }
 
 
-
-    public void setItem(@DrawableRes int img){
+    public void setItem(@DrawableRes int img) {
         item.setIcon(img);
     }
 
@@ -200,11 +239,11 @@ public class MainActivity extends AppCompatActivity implements Callback<NewsRepo
         this.language = language;
     }
 
-    public void bindDataFragment(){
-        ArrayList<News>dataSaved=(ArrayList)DataBaseSaved.getInstance(this).getNewsDao().getAll();
+    public void bindDataFragment() {
+        ArrayList<NewsSaved> dataSaved = (ArrayList) DataBaseSaved.getInstance(this).getNewsDao().getAll();
         getSaved().getData().addAll(dataSaved);
 
-        ArrayList<News> dataFavorite=(ArrayList) DataBaseFavorite.getInstance(this).getNewsDao().getAll();
+        ArrayList<News> dataFavorite = (ArrayList) DataBaseFavorite.getInstance(this).getNewsDao().getAll();
 
         getFavorite().getData().addAll(dataFavorite);
     }
@@ -217,17 +256,41 @@ public class MainActivity extends AppCompatActivity implements Callback<NewsRepo
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()){
-                case R.id.icon_home:
-                    binding.pager.setCurrentItem(0);
-                    break;
-                case R.id.ic_saved:
-                    binding.pager.setCurrentItem(1);
-                    break;
-                case R.id.ic_favorie:
-                    binding.pager.setCurrentItem(2);
-                    break;
-            }
+        switch (item.getItemId()) {
+            case R.id.icon_home:
+                binding.pager.setCurrentItem(0);
+                break;
+            case R.id.ic_saved:
+
+                binding.pager.setCurrentItem(1);
+                break;
+            case R.id.ic_favorie:
+                binding.pager.setCurrentItem(2);
+                break;
+        }
         return false;
     }
+
+
+    @Override
+    public void onDownloadUpdate(int percent) {
+        news.getProgressBar().setProgress(percent);
+    }
+
+    @Override
+    public void onDownloadSuccess(String path) {
+            this.path=path;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
 }
+
+
+
+

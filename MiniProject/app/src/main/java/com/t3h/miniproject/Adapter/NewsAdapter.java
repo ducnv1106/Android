@@ -13,11 +13,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.t3h.miniproject.R;
 import com.t3h.miniproject.model.News;
+import com.t3h.miniproject.model.NewsSaved;
 
 import java.util.ArrayList;
 
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewHolder> {
-    private ArrayList<News> data;
+    private ArrayList<NewsSaved> data;
     private LayoutInflater inflater;
     private ItemClickListener itemClickListener;
 
@@ -25,13 +26,13 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewHolder> {
         this.itemClickListener = itemClickListener;
     }
 
-    public void setData(ArrayList<News> data) {
+    public void setData(ArrayList<NewsSaved> data) {
         this.data = data;
         notifyDataSetChanged();
     }
 
     public NewsAdapter(Context context) {
-       inflater=LayoutInflater.from(context);
+        inflater=LayoutInflater.from(context);
     }
 
     @NonNull

@@ -7,8 +7,9 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
 import com.t3h.miniproject.model.News;
+import com.t3h.miniproject.model.NewsSaved;
 
-@Database(entities = News.class, version = 1)
+@Database(entities = NewsSaved.class, version = 1)
 public abstract class DataBaseSaved extends RoomDatabase {
 
     public static DataBaseSaved dataBaseSaved;

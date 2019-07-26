@@ -10,6 +10,7 @@ import com.t3h.miniproject.Adapter.NewsAdapter;
 import com.t3h.miniproject.R;
 import com.t3h.miniproject.dao.DataBaseFavorite;
 import com.t3h.miniproject.model.News;
+import com.t3h.miniproject.model.NewsSaved;
 
 import java.util.ArrayList;
 
@@ -17,7 +18,7 @@ public class FavoriteFragment extends BaseFragment {
     public FavoriteFragment() {
     }
 
-    public FavoriteFragment(RecyclerView lv_news, ArrayList<News> data, NewsAdapter adapter) {
+    public FavoriteFragment(RecyclerView lv_news, ArrayList<NewsSaved> data, NewsAdapter adapter) {
         super(lv_news, data, adapter);
     }
 
