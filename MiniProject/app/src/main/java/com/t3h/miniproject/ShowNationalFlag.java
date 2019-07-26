@@ -1,6 +1,8 @@
 package com.t3h.miniproject;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +19,7 @@ import com.t3h.miniproject.model.NationalFlag;
 
 import java.util.ArrayList;
 
-public class ShowNationalFlag extends DialogFragment implements NationalFlagAdapter.ItemNationalFlagOnClickListener, View.OnClickListener {
+public class ShowNationalFlag extends DialogFragment implements NationalFlagAdapter.ItemNationalFlagOnClickListener, View.OnClickListener, TextWatcher {
     private ImageView imgSreach;
     private ArrayList<NationalFlag> datasearch = new ArrayList<>();
     private EditText keylanguage;
@@ -32,6 +34,7 @@ public class ShowNationalFlag extends DialogFragment implements NationalFlagAdap
 
         lv_national = view.findViewById(R.id.lv_flag);
         keylanguage = view.findViewById(R.id.edit_keylanguage);
+        keylanguage.addTextChangedListener(this);
         imgSreach = view.findViewById(R.id.img_search);
         imgSreach.setOnClickListener(this);
 
@@ -113,5 +116,30 @@ public class ShowNationalFlag extends DialogFragment implements NationalFlagAdap
         }
 
 
+    }
+
+    @Override
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+    }
+
+    @Override
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+    }
+
+    @Override
+    public void afterTextChanged(Editable s) {
+        datasearch.clear();
+       String keyseach=s.toString();
+       if(!keyseach.isEmpty()){
+           for (NationalFlag nationalFlag: data){
+               int indexof=nationalFlag.getKeylanguagefull().indexOf(keyseach);
+               if(indexof!=-1){
+                   datasearch.add(nationalFlag);
+               }
+           }
+           adapter.setData(datasearch);
+       }
     }
 }

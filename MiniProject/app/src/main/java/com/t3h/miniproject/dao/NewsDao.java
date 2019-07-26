@@ -33,4 +33,7 @@ public interface NewsDao {
 
     @Delete
     void delete(News...news);
+
+    @Query("DELETE FROM news LIMIT 1")
+    void deleteDataBaseRowOne();
 }
