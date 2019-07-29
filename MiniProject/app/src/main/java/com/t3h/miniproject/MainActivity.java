@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -26,6 +27,7 @@ import com.t3h.miniproject.api.ApiBuilder;
 import com.t3h.miniproject.dao.DataBaseFavorite;
 import com.t3h.miniproject.dao.DataBaseSaved;
 import com.t3h.miniproject.databinding.ActivityMainBinding;
+import com.t3h.miniproject.dowlnoad.DownloadAsync;
 import com.t3h.miniproject.fragment.FavoriteFragment;
 import com.t3h.miniproject.fragment.NewsFragment;
 import com.t3h.miniproject.fragment.SavedFragment;
@@ -39,7 +41,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MainActivity extends AppCompatActivity implements Callback<NewsReponsive>, BottomNavigationView.OnNavigationItemSelectedListener ,DownloadAsync.DownloadCallback{
+public class MainActivity extends AppCompatActivity implements Callback<NewsReponsive>, BottomNavigationView.OnNavigationItemSelectedListener , DownloadAsync.DownloadCallback{
     private String path;
     private final String[] PERMISSIONS = {
             Manifest.permission.READ_EXTERNAL_STORAGE,
@@ -91,6 +93,8 @@ public class MainActivity extends AppCompatActivity implements Callback<NewsRepo
 
         bindDataFragment();
 
+        Log.d(getClass().getSimpleName(),System.currentTimeMillis()+"");
+
     }
     private boolean checkPermission(){
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -129,7 +133,7 @@ public class MainActivity extends AppCompatActivity implements Callback<NewsRepo
 //        btnsearch=findViewById(R.id.btn_search);
 //        btnsearch.setOnClickListener(this);
         binding.navView.setOnNavigationItemSelectedListener(this);
-        pageadapter = new PageNewsAdapter(getSupportFragmentManager(), news, saved, favorite);
+        pageadapter = new PageNewsAdapter(getSupportFragmentManager(), news,saved, favorite);
         binding.pager.setAdapter(pageadapter);
         binding.pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -240,8 +244,11 @@ public class MainActivity extends AppCompatActivity implements Callback<NewsRepo
     }
 
     public void bindDataFragment() {
-        ArrayList<NewsSaved> dataSaved = (ArrayList) DataBaseSaved.getInstance(this).getNewsDao().getAll();
-        getSaved().getData().addAll(dataSaved);
+        ArrayList<NewsSaved> dataSaved = (ArrayList) DataBaseSaved.getInstance(this).getNewsSavedDao().getAll();
+        if(dataSaved.size()!=0){
+            getSaved().getdata().addAll(dataSaved);
+        }
+
 
         ArrayList<News> dataFavorite = (ArrayList) DataBaseFavorite.getInstance(this).getNewsDao().getAll();
 
@@ -274,12 +281,17 @@ public class MainActivity extends AppCompatActivity implements Callback<NewsRepo
 
     @Override
     public void onDownloadUpdate(int percent) {
-        news.getProgressBar().setProgress(percent);
+
     }
 
     @Override
     public void onDownloadSuccess(String path) {
             this.path=path;
+        news.getNewsSaved().setPath(path);
+        DataBaseSaved.getInstance(this).getNewsSavedDao().insert(news.getNewsSaved());
+        news.getNewsSaved();
+        saved.getdata().add(news.getNewsSaved());
+        saved.getAdapterSaved().setData(saved.getdata());
     }
 
     public String getPath() {
@@ -289,6 +301,8 @@ public class MainActivity extends AppCompatActivity implements Callback<NewsRepo
     public void setPath(String path) {
         this.path = path;
     }
+
+
 }
 
 

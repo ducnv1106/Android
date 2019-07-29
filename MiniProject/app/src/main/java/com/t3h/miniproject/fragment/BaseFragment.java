@@ -23,6 +23,10 @@ import java.util.List;
 
 public abstract class BaseFragment  extends Fragment implements NewsAdapter.ItemClickListener {
 
+    private RecyclerView lv_news;
+    private ArrayList<News> data=new ArrayList<>();
+    private NewsAdapter adapter;
+
     public BaseFragment(RecyclerView lv_news, NewsAdapter adapter) {
         this.lv_news = lv_news;
         this.adapter = adapter;
@@ -31,11 +35,11 @@ public abstract class BaseFragment  extends Fragment implements NewsAdapter.Item
     public BaseFragment() {
     }
 
-    private RecyclerView lv_news;
-    private ArrayList<NewsSaved> data=new ArrayList<>();
-    private NewsAdapter adapter;
+    public BaseFragment(RecyclerView lv_news) {
+        this.lv_news = lv_news;
+    }
 
-    public BaseFragment(RecyclerView lv_news, ArrayList<NewsSaved> data, NewsAdapter adapter) {
+    public BaseFragment(RecyclerView lv_news, ArrayList<News> data, NewsAdapter adapter) {
         this.lv_news = lv_news;
         this.data = data;
         this.adapter = adapter;
@@ -79,17 +83,17 @@ public abstract class BaseFragment  extends Fragment implements NewsAdapter.Item
         return adapter;
     }
 
-    public void setData(ArrayList<NewsSaved> data) {
+    public void setData(ArrayList<News> data) {
 
         this.data = data;
 
     }
 
-    public ArrayList<NewsSaved> getData() {
+    public ArrayList<News> getData() {
         return data;
     }
-    public void addData(NewsSaved saved){
-        data.add(saved);
-    }
 
+    public RecyclerView getLv_news() {
+        return lv_news;
+    }
 }

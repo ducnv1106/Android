@@ -9,7 +9,7 @@ import android.widget.ProgressBar;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.t3h.miniproject.DownloadAsync;
+import com.t3h.miniproject.dowlnoad.DownloadAsync;
 import com.t3h.miniproject.MainActivity;
 import com.t3h.miniproject.Adapter.NewsAdapter;
 import com.t3h.miniproject.R;
@@ -21,7 +21,7 @@ import com.t3h.miniproject.model.NewsSaved;
 import java.util.ArrayList;
 
 public class NewsFragment extends BaseFragment implements NewsAdapter.ItemClickListener {
-    private ProgressBar progressBar;
+    private NewsSaved newsSaved;
     public NewsFragment() {
     }
 
@@ -53,7 +53,7 @@ public class NewsFragment extends BaseFragment implements NewsAdapter.ItemClickL
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        progressBar=getActivity().findViewById(R.id.progress);
+
         super.onActivityCreated(savedInstanceState);
     }
 
@@ -71,23 +71,23 @@ public class NewsFragment extends BaseFragment implements NewsAdapter.ItemClickL
                         DownloadAsync async=new DownloadAsync(main);
                         async.execute(main.getNews().getData().get(position).getUrl());
 
+
                         int id=main.getNews().getData().get(position).getId();
-                        String titel=main.getNews().getData().get(position).getTitle();
+                        String title=main.getNews().getData().get(position).getTitle();
                         String desc=main.getNews().getData().get(position).getDesc();
                         String url=main.getNews().getData().get(position).getUrl();
                         String img=main.getNews().getData().get(position).getImg();
                         String date=main.getNews().getData().get(position).getDate();
                         String path=main.getPath();
-                        NewsSaved news=new NewsSaved(id,titel,desc,url,img,date,path);
+                        newsSaved=new NewsSaved(id,title,desc,url,img,date,null);
 
-                        DataBaseSaved.getInstance(getContext()).getNewsDao().insert(news);
-                        main.getSaved().addData(main.getNews().getData().get(position));
-                        main.getSaved().getAdapter().setData(main.getSaved().getData());
+//                        main.getSaved().getdata().add(news);
+//                        main.getSaved().getAdapter().setData(main.getSaved().getData());
 
                         break;
                     case R.id.item_menu_news_favorite:
                         DataBaseFavorite.getInstance(getContext()).getNewsDao().insert(main.getNews().getData().get(position));
-                        main.getFavorite().addData(main.getNews().getData().get(position));
+                        main.getFavorite().getData().add(main.getNews().getData().get(position));
 
                         break;
                 }
@@ -96,10 +96,10 @@ public class NewsFragment extends BaseFragment implements NewsAdapter.ItemClickL
         });
     }
 
-    public ProgressBar getProgressBar() {
-        return progressBar;
+
+
+    public NewsSaved getNewsSaved() {
+        return newsSaved;
     }
-
-
 }
 

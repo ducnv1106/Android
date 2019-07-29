@@ -18,7 +18,7 @@ public class FavoriteFragment extends BaseFragment {
     public FavoriteFragment() {
     }
 
-    public FavoriteFragment(RecyclerView lv_news, ArrayList<NewsSaved> data, NewsAdapter adapter) {
+    public FavoriteFragment(RecyclerView lv_news, ArrayList<News> data, NewsAdapter adapter) {
         super(lv_news, data, adapter);
     }
 

@@ -18,7 +18,7 @@ import com.t3h.miniproject.model.NewsSaved;
 import java.util.ArrayList;
 
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewHolder> {
-    private ArrayList<NewsSaved> data;
+    private ArrayList<News> data;
     private LayoutInflater inflater;
     private ItemClickListener itemClickListener;
 
@@ -26,7 +26,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewHolder> {
         this.itemClickListener = itemClickListener;
     }
 
-    public void setData(ArrayList<NewsSaved> data) {
+    public void setData(ArrayList<News> data) {
         this.data = data;
         notifyDataSetChanged();
     }

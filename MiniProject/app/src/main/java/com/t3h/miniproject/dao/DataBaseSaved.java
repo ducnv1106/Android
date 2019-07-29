@@ -13,7 +13,7 @@ import com.t3h.miniproject.model.NewsSaved;
 public abstract class DataBaseSaved extends RoomDatabase {
 
     public static DataBaseSaved dataBaseSaved;
-    public abstract NewsDao getNewsDao();
+    public abstract NewsSavedDao getNewsSavedDao();
 
     public static DataBaseSaved getInstance(Context context){
         if(dataBaseSaved==null){
