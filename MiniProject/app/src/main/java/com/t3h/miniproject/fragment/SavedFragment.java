@@ -64,8 +64,8 @@ public class SavedFragment extends BaseFragment implements NewsSavedAdapter.Item
 
     @Override
     public void onItemNewsSavedClicked(int position) {
-        Intent intent=new Intent(getContext(), WebViewSaved.class);
-        intent.putExtra(Constant.EXTRA_URL,data.get(position).getPath());
+        Intent intent=new Intent(getContext(), WebActivity.class);
+        intent.putExtra(Constant.EXTRA_PATH,data.get(position).getPath());
         startActivity(intent);
     }
 
