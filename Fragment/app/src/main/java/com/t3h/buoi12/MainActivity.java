@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction transaction=getSupportFragmentManager().beginTransaction();
         transaction.add(R.id.panel,fmLogin);
         transaction.add(R.id.panel,fmRegister);
+
         transaction.commit();
     }
     public void showFragment(Fragment fmshow){
