@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="item"
+            type="com.t3h.mp3music.model.Song" />
+    </data>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:src="@drawable/ic_music"
+        android:layout_width="64dp"
+        android:layout_height="64dp" />
+    <LinearLayout
+        android:paddingLeft="10dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:textColor="@color/colorAccent"
+            android:text="@{item.title}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            app:time="@{item.duration}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="@{item.artist}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>
+</layout>
