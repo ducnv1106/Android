@@ -21,7 +21,7 @@ public class FragmentSong extends BaseFragment<FragmentSongBinding> implements S
         super.onActivityCreated(savedInstanceState);
         data=new SystemData(getContext());
         adapter=new BaseAdapter<>(getContext(),R.layout.item_song);
-        adapter.setData(data.getSong());
+        adapter.setData(data.getDataSong());
         adapter.setListener(this);
         binding.lvSong.setAdapter(adapter);
     }

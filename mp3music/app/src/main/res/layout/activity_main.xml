@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,22 +8,29 @@
     android:layout_height="match_parent"
     tools:context=".activity.MainActivity">
 
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/pager"
+    <FrameLayout
+        android:id="@+id/panel"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></androidx.viewpager.widget.ViewPager>
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        app:itemIconTint="@drawable/item_listener_navi"
-        app:itemTextColor="@drawable/item_listener_navi"
-        android:layout_alignParentBottom="true"
-        android:id="@+id/nav_view"
-        app:menu="@menu/menu_bottom_navi"
-        android:background="?android:attr/windowBackground"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"></com.google.android.material.bottomnavigation.BottomNavigationView>
+        android:layout_height="match_parent">
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></androidx.viewpager.widget.ViewPager>
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:visibility="invisible"
+            android:layout_gravity="bottom"
+            app:itemIconTint="@drawable/listener_selector_bottom_navi"
+            app:itemTextColor="@drawable/listener_selector_bottom_navi"
+            android:layout_alignParentBottom="true"
+            android:id="@+id/bottom_navi"
+            app:menu="@menu/menu_bottom_navigation"
+            android:background="?android:attr/windowBackground"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></com.google.android.material.bottomnavigation.BottomNavigationView>
+    </FrameLayout>
 
-</LinearLayout>
+</RelativeLayout>
 </layout>

@@ -5,11 +5,22 @@
             name="item"
             type="com.t3h.mp3music.model.Song" />
     </data>
+    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="1dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        card_view:cardElevation="5dp">
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <ImageView
-        android:src="@drawable/ic_music"
+        android:layout_gravity="center"
+        android:background="#F7F3F3"
+       android:src="@drawable/ic_music"
         android:layout_width="64dp"
         android:layout_height="64dp" />
     <LinearLayout
@@ -32,4 +43,5 @@
             android:layout_height="wrap_content" />
     </LinearLayout>
 </LinearLayout>
+    </androidx.cardview.widget.CardView>
 </layout>

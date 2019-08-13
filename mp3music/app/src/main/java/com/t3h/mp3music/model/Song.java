@@ -16,11 +16,15 @@ public class Song extends BaseModel {
     @FieldInfo(nameInfo = MediaStore.Audio.Media.ARTIST)
     private String artist;
 
-    public Song(String title, int size, int duration, String artist) {
+    @FieldInfo(nameInfo = MediaStore.Audio.Media.ARTIST_ID)
+    private String idArtist;
+
+    public Song(String title, int size, int duration, String artist, String idArtist) {
         this.title = title;
         this.size = size;
         this.duration = duration;
         this.artist = artist;
+        this.idArtist = idArtist;
     }
 
     public String getTitle() {
@@ -37,5 +41,9 @@ public class Song extends BaseModel {
 
     public String getArtist() {
         return artist;
+    }
+
+    public String getIdArtist() {
+        return idArtist;
     }
 }

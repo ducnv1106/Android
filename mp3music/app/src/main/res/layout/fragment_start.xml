@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#3FB0F3"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+        <TextView
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginTop="250dp"
+            android:textColor="#FFFF"
+            android:textSize="35sp"
+            android:id="@+id/tv_mymusic"
+            android:text="M3P\nMusic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <ProgressBar
+            android:id="@+id/progress"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/tv_mymusic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+</LinearLayout>
+</layout>

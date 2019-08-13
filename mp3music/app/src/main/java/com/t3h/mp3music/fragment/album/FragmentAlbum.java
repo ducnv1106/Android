@@ -20,10 +20,15 @@ public class FragmentAlbum extends BaseFragment<FragmentAlbumBinding> implements
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         data=new SystemData(getContext());
+        data.getAlbum().size();
         adapter=new BaseAdapter<>(getContext(),R.layout.item_album);
         adapter.setData(data.getAlbum());
         adapter.setListener(this);
         binding.lvAlbum.setAdapter(adapter);
+        data.getArrayList().size();
+        int a=3;
+
+
     }
 
     @Override

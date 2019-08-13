@@ -53,7 +53,7 @@ public class BaseAdapter<T extends BaseModel> extends RecyclerView.Adapter<BaseA
     @Override
     public void onBindViewHolder(@NonNull BaseAdapter.BaseViewHolder holder, int position) {
         T item=data.get(position);
-
+        holder.binding.setVariable(BR.listener,listener);
         holder.binding.setVariable(BR.item, item);
         holder.binding.executePendingBindings();
     }
