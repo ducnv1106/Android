@@ -2,7 +2,9 @@ package com.t3h.mp3music.model;
 
 import android.provider.MediaStore;
 
-public class Artist extends BaseModel {
+import java.io.Serializable;
+
+public class Artist extends BaseModel implements Serializable {
 
     @FieldInfo(nameInfo = MediaStore.Audio.Artists.ARTIST)
     private String name;
@@ -17,10 +19,11 @@ public class Artist extends BaseModel {
     private String idArtist;
 
 
-    public Artist(String name, int numberSong, String image) {
+    public Artist(String name, int numberSong, String image, String idArtist) {
         this.name = name;
         this.numberSong = numberSong;
         this.image = image;
+        this.idArtist = idArtist;
     }
 
     public String getName() {
@@ -34,5 +37,9 @@ public class Artist extends BaseModel {
 
     public String getImage() {
         return image;
+    }
+
+    public String getIdArtist() {
+        return idArtist;
     }
 }

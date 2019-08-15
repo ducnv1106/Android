@@ -55,6 +55,8 @@ public class BaseAdapter<T extends BaseModel> extends RecyclerView.Adapter<BaseA
         T item=data.get(position);
         holder.binding.setVariable(BR.listener,listener);
         holder.binding.setVariable(BR.item, item);
+        holder.binding.setVariable(BR.position,position+1);
+
         holder.binding.executePendingBindings();
     }
 

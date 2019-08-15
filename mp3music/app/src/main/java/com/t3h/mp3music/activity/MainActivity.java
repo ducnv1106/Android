@@ -12,11 +12,14 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.t3h.mp3music.Constant;
 import com.t3h.mp3music.R;
 import com.t3h.mp3music.adapter.Mp3PagerAdapter;
 import com.t3h.mp3music.databinding.ActivityMainBinding;
@@ -38,10 +41,6 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> implements B
 
     private MenuItem myMenuItem;
 
-    private final String[] PEMISSONS = {
-            Manifest.permission.WRITE_EXTERNAL_STORAGE,
-            Manifest.permission.READ_EXTERNAL_STORAGE
-    };
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -127,27 +126,6 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> implements B
 
 
 
-    public boolean checkPermisson() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            for (String p : PEMISSONS) {
-                int check = checkSelfPermission(p);
-                if (check != PackageManager.PERMISSION_GRANTED) {
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (checkPermisson()) {
-            initView();
-        } else {
-            finish();
-        }
-    }
 
     @Override
     protected void initView() {
@@ -157,6 +135,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> implements B
         }
         FragmentTransaction transaction=getSupportFragmentManager().beginTransaction();
         transaction.add(R.id.panel,fragmentStart);
+        transaction.show(fragmentStart);
         transaction.commit();
 
     }
@@ -184,5 +163,46 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> implements B
         }
         return false;
     }
+    public boolean checkPermisson() {
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.READ_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                    Constant.MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE);
+            return  false;
+        } else {
+            return  true;
+        }
+    }
+
+    /**
+     * do you want to do
+     */
+    public void readFile() {
+        // do something
+    }
+
+    /**
+     * onRequestPermissionsResult
+     *
+     * @param requestCode
+     * @param permissions
+     * @param grantResults
+     */
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+
+        if (checkPermisson()) {
+
+            initView();
+        }else {
+            finish();
+        }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+
 
 }

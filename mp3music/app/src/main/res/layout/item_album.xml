@@ -5,6 +5,9 @@
         <variable
             name="item"
             type="com.t3h.mp3music.model.Album" />
+        <variable
+            name="listener"
+            type="com.t3h.mp3music.fragment.album.AlbumListener" />
     </data>
     <androidx.cardview.widget.CardView
         xmlns:card_view="http://schemas.android.com/apk/res-auto"
@@ -17,6 +20,7 @@
         android:layout_marginRight="5dp"
         card_view:cardElevation="5dp">
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:onClick="@{(v)->listener.AlbumCLicked(item)}"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content">
 

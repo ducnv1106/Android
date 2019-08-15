@@ -2,7 +2,9 @@ package com.t3h.mp3music.model;
 
 import android.provider.MediaStore;
 
-public class Song extends BaseModel {
+import java.io.Serializable;
+
+public class Song extends BaseModel  {
 
     @FieldInfo(nameInfo = MediaStore.Audio.Media.TITLE)
     private String title;
@@ -19,12 +21,17 @@ public class Song extends BaseModel {
     @FieldInfo(nameInfo = MediaStore.Audio.Media.ARTIST_ID)
     private String idArtist;
 
-    public Song(String title, int size, int duration, String artist, String idArtist) {
+
+    @FieldInfo(nameInfo = MediaStore.Audio.Media.ALBUM_ID)
+    private String idAlbum;
+
+    public Song(String title, int size, int duration, String artist, String idArtist, String idAlbum) {
         this.title = title;
         this.size = size;
         this.duration = duration;
         this.artist = artist;
         this.idArtist = idArtist;
+        this.idAlbum = idAlbum;
     }
 
     public String getTitle() {
@@ -45,5 +52,9 @@ public class Song extends BaseModel {
 
     public String getIdArtist() {
         return idArtist;
+    }
+
+    public String getIdAlbum() {
+        return idAlbum;
     }
 }

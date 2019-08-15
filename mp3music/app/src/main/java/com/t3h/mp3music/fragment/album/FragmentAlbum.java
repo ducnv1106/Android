@@ -1,15 +1,20 @@
 package com.t3h.mp3music.fragment.album;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 
+import com.t3h.mp3music.Constant;
 import com.t3h.mp3music.R;
+import com.t3h.mp3music.activity.SongArtistActivity;
 import com.t3h.mp3music.adapter.BaseAdapter;
 import com.t3h.mp3music.databinding.FragmentAlbumBinding;
 import com.t3h.mp3music.fragment.BaseFragment;
 import com.t3h.mp3music.model.Album;
 import com.t3h.mp3music.systemdata.SystemData;
+
+import java.io.Serializable;
 
 public class FragmentAlbum extends BaseFragment<FragmentAlbumBinding> implements AlbumListener {
 
@@ -25,8 +30,7 @@ public class FragmentAlbum extends BaseFragment<FragmentAlbumBinding> implements
         adapter.setData(data.getAlbum());
         adapter.setListener(this);
         binding.lvAlbum.setAdapter(adapter);
-        data.getArrayList().size();
-        int a=3;
+
 
 
     }
@@ -42,7 +46,10 @@ public class FragmentAlbum extends BaseFragment<FragmentAlbumBinding> implements
     }
 
     @Override
-    public void AlbumCLicked() {
+    public void AlbumCLicked(Album album) {
+        Intent intent=new Intent(getContext(), SongArtistActivity.class);
+        intent.putExtra(Constant.EXTRA_ALBUM,album);
+        startActivity(intent);
 
     }
 }

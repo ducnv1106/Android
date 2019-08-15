@@ -6,6 +6,7 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import com.t3h.mp3music.Constant;
 import com.t3h.mp3music.R;
 import com.t3h.mp3music.activity.SongArtistActivity;
 import com.t3h.mp3music.adapter.BaseAdapter;
@@ -42,9 +43,9 @@ public class FragmentArtist extends BaseFragment<FragmentArtistBinding> implemen
 
     @Override
     public void ArtistClicker(Artist artist) {
-//        Intent intent=new Intent(getContext(), SongArtistActivity.class);
-//        startActivity(intent);
-        Toast.makeText(getContext(),"hello",Toast.LENGTH_SHORT).show();
-        int a=3;
+
+        Intent intent=new Intent(getContext(),SongArtistActivity.class);
+        intent.putExtra(Constant.EXTRA_ARTIST,artist);
+        startActivity(intent);
     }
 }
