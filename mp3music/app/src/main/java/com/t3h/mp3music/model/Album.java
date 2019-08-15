@@ -15,17 +15,17 @@ public class Album extends BaseModel implements Serializable {
     @FieldInfo(nameInfo = MediaStore.Audio.Albums.ALBUM_ART)
     private String image;
 
-    @FieldInfo(nameInfo = MediaStore.Audio.Albums._ID)
-    private String idAlbum;
+    @FieldInfo(nameInfo = MediaStore.Audio.Albums.ALBUM_KEY)
+    private String keyAlbum;
 
     @FieldInfo(nameInfo = MediaStore.Audio.Albums.NUMBER_OF_SONGS)
     private int numberSong;
 
-    public Album(String name, String artist, String image, String idAlbum, int numberSong) {
+    public Album(String name, String artist, String image, String keyAlbum, int numberSong) {
         this.name = name;
         this.artist = artist;
         this.image = image;
-        this.idAlbum = idAlbum;
+        this.keyAlbum = keyAlbum;
         this.numberSong = numberSong;
     }
 
@@ -41,8 +41,8 @@ public class Album extends BaseModel implements Serializable {
         return image;
     }
 
-    public String getIdAlbum() {
-        return idAlbum;
+    public String getKeyAlbum() {
+        return keyAlbum;
     }
 
     public int getNumberSong() {

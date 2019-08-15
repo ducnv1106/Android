@@ -177,25 +177,10 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> implements B
         }
     }
 
-    /**
-     * do you want to do
-     */
-    public void readFile() {
-        // do something
-    }
-
-    /**
-     * onRequestPermissionsResult
-     *
-     * @param requestCode
-     * @param permissions
-     * @param grantResults
-     */
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
 
         if (checkPermisson()) {
-
             initView();
         }else {
             finish();

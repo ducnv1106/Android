@@ -7,4 +7,6 @@ public interface Constant {
     String EXTRA_ARTIST="artist";
 
     String EXTRA_ALBUM="album";
+
+    String EXTRA_SONG="song";
 }

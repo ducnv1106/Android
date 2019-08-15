@@ -7,8 +7,12 @@
         <variable
             name="position"
             type="java.lang.Integer" />
+        <variable
+            name="listener"
+            type="com.t3h.mp3music.fragment.song.SongListener" />
     </data>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:onClick="@{(v)->listener.SongClicked(item)}"
     android:layout_marginBottom="3dp"
     android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="wrap_content">

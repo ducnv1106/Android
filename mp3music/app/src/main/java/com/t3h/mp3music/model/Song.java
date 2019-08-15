@@ -4,7 +4,7 @@ import android.provider.MediaStore;
 
 import java.io.Serializable;
 
-public class Song extends BaseModel  {
+public class Song extends BaseModel implements Serializable  {
 
     @FieldInfo(nameInfo = MediaStore.Audio.Media.TITLE)
     private String title;
@@ -22,16 +22,18 @@ public class Song extends BaseModel  {
     private String idArtist;
 
 
-    @FieldInfo(nameInfo = MediaStore.Audio.Media.ALBUM_ID)
-    private String idAlbum;
+    @FieldInfo(nameInfo = MediaStore.Audio.Media.ALBUM_KEY)
+    private String keyAlbum;
 
-    public Song(String title, int size, int duration, String artist, String idArtist, String idAlbum) {
+
+
+    public Song(String title, int size, int duration, String artist, String idArtist, String keyAlbum) {
         this.title = title;
         this.size = size;
         this.duration = duration;
         this.artist = artist;
         this.idArtist = idArtist;
-        this.idAlbum = idAlbum;
+        this.keyAlbum = keyAlbum;
     }
 
     public String getTitle() {
@@ -54,7 +56,10 @@ public class Song extends BaseModel  {
         return idArtist;
     }
 
-    public String getIdAlbum() {
-        return idAlbum;
+    public String getKeyAlbum() {
+        return keyAlbum;
     }
+
+
+
 }

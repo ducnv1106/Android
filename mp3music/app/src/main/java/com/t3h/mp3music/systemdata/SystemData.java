@@ -32,20 +32,20 @@ public class SystemData {
         int indexName = cursor.getColumnIndex(MediaStore.Audio.Albums.ALBUM);
         int indexArtist = cursor.getColumnIndex(MediaStore.Audio.Albums.ARTIST);
         int indexImage = cursor.getColumnIndex(MediaStore.Audio.Albums.ALBUM_ART);
-        int indexIdAlbum=cursor.getColumnIndex(MediaStore.Audio.Albums._ID);
+        int indexKeyAlbum=cursor.getColumnIndex(MediaStore.Audio.Albums.ALBUM_KEY);
         int indexNumberSong=cursor.getColumnIndex(MediaStore.Audio.Albums.NUMBER_OF_SONGS);
 
         while (cursor.isAfterLast() == false) {
-//           for(int i=0;i<cursor.getColumnCount();i++){
-//               Log.e(cursor.getColumnName(i),cursor.getString(i)+"");
-//
-//           }
-//           Log.e("----","----");
+           for(int i=0;i<cursor.getColumnCount();i++){
+               Log.e(cursor.getColumnName(i),cursor.getString(i)+"");
+
+           }
+           Log.e("----","----");
 
             String name = cursor.getString(indexName);
             String artist = cursor.getString(indexArtist);
             String image = cursor.getString(indexImage);
-            String idAlbum=cursor.getString(indexIdAlbum);
+            String keyAlbum=cursor.getString(indexKeyAlbum);
             int numberSong=cursor.getInt(indexNumberSong);
             if (arrayList.size() == 0) {
                 ImageArtist imageArtist = new ImageArtist(image, artist);
@@ -56,7 +56,7 @@ public class SystemData {
                     arrayList.add(imageArtist);
                 }
             }
-            Album album = new Album(name, artist, image,idAlbum,numberSong);
+            Album album = new Album(name, artist, image,keyAlbum,numberSong);
             arr.add(album);
             cursor.moveToNext();
         }
@@ -123,20 +123,24 @@ public class SystemData {
         int indexDuration = cursor.getColumnIndex(MediaStore.Audio.Media.DURATION);
         int indexArtist = cursor.getColumnIndex(MediaStore.Audio.Media.ARTIST);
         int indexIdArtist = cursor.getColumnIndex(MediaStore.Audio.Media.ARTIST_ID);
-        int indexIdAlbum=cursor.getColumnIndex(MediaStore.Audio.Media.ALBUM_ID);
+        int indexKeyAlbum=cursor.getColumnIndex(MediaStore.Audio.Media.ALBUM_KEY);
+
+
+
         while (cursor.isAfterLast() == false) {
 //            for (int i=0;i<cursor.getColumnCount();i++){
-//                Log.d(cursor.getColumnName(i),cursor.getString(i)+"");
+//                Log.d(cursor.getColumnName(i),cursor.getString(i)+" ");
 //                // get CloumnName Song
 //
 //            }
-//            Log.d("-------------","-----------");
+            Log.d("-------------","-----------");
             String tilte = cursor.getString(indexTitle);
             int size = cursor.getInt(indexSize);
             int duration = cursor.getInt(indexDuration);
             String artist = cursor.getString(indexArtist);
             String idArtist = cursor.getString(indexIdArtist);
-            String idAlbum=cursor.getString(indexIdAlbum);
+            String idAlbum=cursor.getString(indexKeyAlbum);
+
 
             Song song = new Song(tilte, size, duration, artist, idArtist,idAlbum);
 
@@ -152,6 +156,16 @@ public class SystemData {
 
         for (Song song : getDataSong()) {
             if (song.getIdArtist().equals(id)) {
+                data.add(song);
+            }
+        }
+        return data;
+    }
+    public ArrayList<Song> getArrSongAlbum(String keyAlbum){
+        ArrayList<Song> data=new ArrayList<>();
+
+        for(Song song: getDataSong()){
+            if(song.getKeyAlbum().equals(keyAlbum)){
                 data.add(song);
             }
         }
