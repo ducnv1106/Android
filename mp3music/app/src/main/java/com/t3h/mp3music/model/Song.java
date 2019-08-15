@@ -26,14 +26,16 @@ public class Song extends BaseModel implements Serializable  {
     private String keyAlbum;
 
 
+    private String img;
 
-    public Song(String title, int size, int duration, String artist, String idArtist, String keyAlbum) {
+    public Song(String title, int size, int duration, String artist, String idArtist, String keyAlbum, String img) {
         this.title = title;
         this.size = size;
         this.duration = duration;
         this.artist = artist;
         this.idArtist = idArtist;
         this.keyAlbum = keyAlbum;
+        this.img = img;
     }
 
     public String getTitle() {
@@ -60,6 +62,7 @@ public class Song extends BaseModel implements Serializable  {
         return keyAlbum;
     }
 
-
-
+    public String getImg() {
+        return img;
+    }
 }

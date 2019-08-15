@@ -23,6 +23,7 @@ public class FragmentSong extends BaseFragment<FragmentSongBinding> implements S
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         data=new SystemData(getContext());
+        data.getAlbum();
         adapter=new BaseAdapter<>(getContext(),R.layout.item_song);
         adapter.setData(data.getDataSong());
         adapter.setListener(this);

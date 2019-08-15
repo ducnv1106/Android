@@ -11,11 +11,13 @@
         android:orientation="vertical">
 
         <LinearLayout
+            android:background="#F1EFEF"
             android:layout_width="match_parent"
             android:layout_height="300dp"
             android:orientation="vertical">
             <ImageView
-                android:layout_width="200dp"
+                android:src="@drawable/background"
+                android:layout_width="300dp"
                 android:layout_height="200dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="50dp"

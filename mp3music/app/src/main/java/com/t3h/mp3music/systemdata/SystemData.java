@@ -142,7 +142,7 @@ public class SystemData {
             String idAlbum=cursor.getString(indexKeyAlbum);
 
 
-            Song song = new Song(tilte, size, duration, artist, idArtist,idAlbum);
+            Song song = new Song(tilte, size, duration, artist, idArtist,idAlbum,getImageArtist(artist));
 
             dataSong.add(song);
             cursor.moveToNext();
