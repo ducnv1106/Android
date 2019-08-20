@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
             name="item"
@@ -85,7 +85,7 @@
                     <TextView
                         android:textColor="#FFF"
                         android:layout_marginLeft="270dp"
-                        android:text="3:30"
+                        app:time="@{item.duration}"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
