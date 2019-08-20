@@ -118,7 +118,6 @@ public class SystemData {
 
         cursor.moveToFirst();
 
-        int indexData= cursor.getColumnIndex(MediaStore.Audio.Media.DATA);
         int indexTitle = cursor.getColumnIndex(MediaStore.Audio.Media.TITLE);
         int indexSize = cursor.getColumnIndex(MediaStore.Audio.Media.SIZE);
         int indexDuration = cursor.getColumnIndex(MediaStore.Audio.Media.DURATION);
@@ -134,8 +133,7 @@ public class SystemData {
 //                // get CloumnName Song
 //
 //            }
-//            Log.d("-------------","-----------");
-            String data=cursor.getString(indexData);
+            Log.d("-------------","-----------");
             String tilte = cursor.getString(indexTitle);
             int size = cursor.getInt(indexSize);
             int duration = cursor.getInt(indexDuration);
@@ -144,7 +142,7 @@ public class SystemData {
             String idAlbum=cursor.getString(indexKeyAlbum);
 
 
-            Song song = new Song(data,tilte, size, duration, artist, idArtist,idAlbum,getImageArtist(artist));
+            Song song = new Song(tilte, size, duration, artist, idArtist,idAlbum,getImageArtist(artist));
 
             dataSong.add(song);
             cursor.moveToNext();

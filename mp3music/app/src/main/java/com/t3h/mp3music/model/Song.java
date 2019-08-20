@@ -1,14 +1,10 @@
 package com.t3h.mp3music.model;
 
-import android.media.MediaPlayer;
 import android.provider.MediaStore;
 
 import java.io.Serializable;
 
 public class Song extends BaseModel implements Serializable  {
-
-    @FieldInfo(nameInfo = MediaStore.Audio.Media.DATA)
-    private String data;
 
     @FieldInfo(nameInfo = MediaStore.Audio.Media.TITLE)
     private String title;
@@ -32,8 +28,7 @@ public class Song extends BaseModel implements Serializable  {
 
     private String img;
 
-    public Song(String data, String title, int size, int duration, String artist, String idArtist, String keyAlbum, String img) {
-        this.data = data;
+    public Song(String title, int size, int duration, String artist, String idArtist, String keyAlbum, String img) {
         this.title = title;
         this.size = size;
         this.duration = duration;
@@ -69,9 +64,5 @@ public class Song extends BaseModel implements Serializable  {
 
     public String getImg() {
         return img;
-    }
-
-    public String getData() {
-        return data;
     }
 }
