@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="listener"
+            type="com.t3h.service.MainActivityListener" />
+    </data>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+  <TextView
+      android:id="@+id/tv"
+      android:textColor="@color/colorAccent"
+      android:textSize="20sp"
+      android:gravity="center"
+      android:text="ABC"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content" />
+    <Button
+        android:onClick="@{v->listener.onBindClicked()}"
+        android:layout_marginTop="10dp"
+        android:text="Bind"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        android:onClick="@{v->listener.onUnBindClicked()}"
+        android:text="UnBind"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>
+</layout>
