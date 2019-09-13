@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigiton_view">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/item_com"
+            android:icon="@drawable/icon_rice"
+            android:title="Cơm" />
+        <item
+            android:id="@+id/item_dangsoi"
+            android:icon="@drawable/icon_rice"
+            android:title="Dạng Sợi" />
+        <item
+            android:id="@+id/item_monanthuongngay"
+            android:icon="@drawable/icon_rice"
+            android:title="Món Ăn Thường Ngày" />
+        <item
+            android:id="@+id/item_xoi"
+            android:icon="@drawable/icon_rice"
+            android:title="Xôi" />
+        <item
+            android:id="@+id/item_danglong"
+            android:icon="@drawable/icon_rice"
+            android:title="Dạng Lỏng" />
+        <item
+            android:id="@+id/item_moncuon"
+            android:icon="@drawable/icon_rice"
+            android:title="Món Cuốn" />
+        <item
+            android:id="@+id/item_banhman"
+            android:icon="@drawable/icon_rice"
+            android:title="Bánh Mặn" />
+
+        <item
+            android:id="@+id/item_banhngot"
+            android:icon="@drawable/icon_rice"
+            android:title="Bánh Ngọt" />
+        <item
+            android:id="@+id/item_monankhac"
+            android:icon="@drawable/icon_rice"
+            android:title="Món Ăn Khác" />
+        <item
+            android:id="@+id/item_dacsandiaphuong"
+            android:icon="@drawable/icon_rice"
+            android:title="Đặc Sản Địa Phương" />
+        <item
+            android:id="@+id/item_douong"
+            android:icon="@drawable/icon_rice"
+            android:title="Đồ Uống" />
+        <item
+            android:id="@+id/item_trangmieng"
+            android:icon="@drawable/icon_rice"
+            android:title="Tráng Miệng" />
+    </group>
+
+</menu>
