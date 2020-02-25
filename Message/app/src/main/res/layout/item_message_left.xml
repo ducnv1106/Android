@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="user"
+            type="com.ducnv1106.message.model.User" />
+        <variable
+            name="message"
+            type="com.ducnv1106.message.model.Message" />
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:orientation="horizontal">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_centerVertical="true"
+            android:id="@+id/img_avatar"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:thumb="@{user.avatar}" />
+
+        <TextView
+            android:padding="5dp"
+            android:textSize="16sp"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/img_avatar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/background_message_left"
+            android:gravity="center|left"
+            android:text="@{message.message}"
+            android:textColor="#2B2323" />
+        <ImageView
+            android:visibility="gone"
+            android:scaleType="fitXY"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/img_avatar"
+            android:src="@drawable/background_default"
+            android:id="@+id/img_pic"
+            android:layout_width="400dp"
+            android:layout_height="200dp"/>
+    </RelativeLayout>
+</layout>

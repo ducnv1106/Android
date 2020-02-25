@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="listener"
+            type="com.ducnv1106.message.view.fragment.signup.SignUpListener" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <!--            <EditText-->
+            <!--                android:singleLine="true"-->
+            <!--                android:id="@+id/edt_name"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginTop="5dp"-->
+            <!--                android:layout_marginBottom="10dp"-->
+            <!--                android:backgroundTint="@drawable/focused_edittext"-->
+            <!--                android:hint="ducnv1106"-->
+            <!--                android:maxLines="1"-->
+            <!--                android:textColor="#FFFFFF"-->
+            <!--                android:textColorHint="#E6E2E2"/>-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textinput_username"
+                style="@style/LoginTextInputLayoutStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTintMode="multiply"
+                android:hint="User name"
+                app:boxBackgroundColor="#F7F4F4"
+                app:errorEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_name"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="textEmailAddress"
+                    android:singleLine="true"
+                    android:textSize="18sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <!--            <EditText-->
+            <!--                android:inputType="textEmailAddress"-->
+            <!--                android:singleLine="true"-->
+            <!--                android:backgroundTint="@drawable/focused_edittext"-->
+            <!--                android:id="@+id/edt_email"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginTop="5dp"-->
+            <!--                android:layout_marginBottom="10dp"-->
+            <!--                android:hint="invisible1106@gmail.com"-->
+            <!--                android:maxLines="1"-->
+            <!--                android:textColor="#FFFFFF"-->
+            <!--                android:textColorHint="#E6E2E2" />-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textinput_email"
+                style="@style/LoginTextInputLayoutStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTintMode="multiply"
+                android:hint="Email"
+                app:boxBackgroundColor="#F7F4F4"
+                app:errorEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_email"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="textEmailAddress"
+                    android:singleLine="true"
+                    android:textSize="18sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <!--            <EditText-->
+            <!--                android:inputType="phone"-->
+            <!--                android:singleLine="true"-->
+            <!--                android:backgroundTint="@drawable/focused_edittext"-->
+            <!--                android:id="@+id/edt_phone"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginTop="5dp"-->
+            <!--                android:layout_marginBottom="10dp"-->
+            <!--                android:hint="0986161863"-->
+            <!--                android:maxLines="1"-->
+            <!--                android:textColor="#FFFFFF"-->
+            <!--                android:textColorHint="#E6E2E2" />-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textinput_phonenumber"
+                style="@style/LoginTextInputLayoutStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTintMode="multiply"
+                android:hint="Phone Number"
+                app:boxBackgroundColor="#F7F4F4"
+                app:errorEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_phone"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="phone"
+                    android:singleLine="true"
+                    android:textSize="18sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <!--            <EditText-->
+            <!--                android:inputType="textPassword"-->
+            <!--                android:singleLine="true"-->
+            <!--                android:backgroundTint="@drawable/focused_edittext"-->
+            <!--                android:id="@+id/edt_password"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginTop="5dp"-->
+            <!--                android:layout_marginBottom="10dp"-->
+            <!--                android:hint="Password"-->
+            <!--                android:maxLines="1"-->
+            <!--                android:textColor="#FFFFFF"-->
+            <!--                android:textColorHint="#E6E2E2" />-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textinput_password"
+                style="@style/LoginTextInputLayoutStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTintMode="multiply"
+                android:hint="Password"
+                app:boxBackgroundColor="#F7F4F4"
+                app:counterEnabled="true"
+                app:counterMaxLength="15"
+                app:errorEnabled="true"
+                app:passwordToggleEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_password"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="textPassword"
+                    android:singleLine="true"
+                    android:textSize="18sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textinput_confirmpassword"
+                style="@style/LoginTextInputLayoutStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTintMode="multiply"
+                android:hint="Confirm Password"
+                app:boxBackgroundColor="#F7F4F4"
+                app:counterEnabled="true"
+                app:counterMaxLength="15"
+                app:errorEnabled="true"
+                app:passwordToggleEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_confirm_password"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="textPassword"
+                    android:singleLine="true"
+                    android:textSize="18sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_signin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="#03A9F4"
+                android:onClick="@{v->listener.onSignUpClicked()}"
+                android:text="Sign up"
+                android:textColor="#FFFFFF" />
+        </LinearLayout>
+    </ScrollView>
+</layout>

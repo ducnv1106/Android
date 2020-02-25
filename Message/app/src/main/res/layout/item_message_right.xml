@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout >
+    <data>
+        <variable
+            name="user"
+            type="com.ducnv1106.message.model.User" />
+        <variable
+            name="message"
+            type="com.ducnv1106.message.model.Message" />
+    </data>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:layout_toLeftOf="@id/img_check_seen"
+                android:background="@drawable/background_message_right"
+                android:gravity="left|center"
+                android:padding="5dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="@{message.message}"
+                android:textColor="#FDFCFC"
+                android:textSize="16sp" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:visibility="invisible"
+                android:id="@+id/img_check_seen"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_check_send_circle" />
+
+        </RelativeLayout>
+    </RelativeLayout>
+</layout>

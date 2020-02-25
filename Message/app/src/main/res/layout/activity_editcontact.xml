@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="user"
+            type="com.ducnv1106.message.model.User" />
+
+        <variable
+            name="listener"
+            type="com.ducnv1106.message.view.acitivity.editcontact.EditContactListener" />
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/appbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fitsSystemWindows="true">
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toobar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="#FFFFFF"
+                    android:fitsSystemWindows="true"
+                    app:layout_scrollFlags="scroll|enterAlways|snap">
+
+                    <TextView
+                        style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:paddingRight="30dp"
+                        android:text="Edit Profile" />
+                </androidx.appcompat.widget.Toolbar>
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#DBD8D8"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:alpha="0.9"
+                        android:orientation="vertical">
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#F3F1F1"
+                            android:paddingLeft="20dp"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp"
+                            android:text="MOBILE PHONES"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                            android:textColor="#525050"
+                            android:textSize="16sp" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/lv_phone"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#FFFFFF"
+                            android:orientation="vertical"
+                            android:paddingTop="20dp"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager">
+
+                        </androidx.recyclerview.widget.RecyclerView>
+
+                        <EditText
+                            android:id="@+id/edt_addphone"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/white"
+                            android:hint="Add another phone"
+                            android:inputType="phone"
+                            android:maxLines="1"
+                            android:paddingLeft="20dp"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp"
+                            android:singleLine="true"
+                            android:visibility="gone" />
+
+                        <RelativeLayout
+                            android:id="@+id/layoutphone"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#EEEEEE"
+                            android:paddingLeft="20dp"
+                            android:paddingTop="10dp"
+                            android:paddingRight="20dp"
+                            android:paddingBottom="10dp"
+                            android:visibility="gone">
+
+                            <Button
+                                android:id="@+id/btn_cancel_phone"
+                                android:layout_width="40dp"
+                                android:layout_height="20dp"
+                                android:layout_alignParentRight="true"
+                                android:background="#FFFFFF"
+                                android:onClick="@{v->listener.onCancelPhoneClicked()}"
+                                android:text="Cancel"
+                                android:textSize="10sp" />
+
+                            <Button
+                                android:id="@+id/btn_save_phone"
+                                android:layout_width="40dp"
+                                android:layout_height="20dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_toLeftOf="@id/btn_cancel_phone"
+                                android:background="#0B7EDA"
+                                android:onClick="@{v->listener.onSavePhoneClicked()}"
+                                android:text="Save"
+                                android:textColor="#FFFFFF"
+                                android:textSize="10sp" />
+                        </RelativeLayout>
+
+                        <TextView
+                            android:id="@+id/tv_add_phone"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#FAF9F9"
+                            android:drawableRight="@drawable/ic_arrow_right"
+                            android:gravity="center"
+                            android:onClick="@{v->listener.onAddOtherPhoneClicked()}"
+                            android:paddingLeft="20dp"
+                            android:paddingTop="10dp"
+                            android:paddingRight="20dp"
+                            android:paddingBottom="10dp"
+                            android:text="Add another phone"
+                            android:textAppearance="@style/TextAppearance.AppCompat"
+                            android:textSize="18sp" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#F3F1F1"
+                            android:paddingLeft="20dp"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp"
+                            android:text="ADDRESS"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                            android:textColor="#525050"
+                            android:textSize="16sp" />
+
+                        <EditText
+                            android:id="@+id/edt_address"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/white"
+                            android:hint="What's your address?"
+                            android:paddingLeft="20dp"
+                            android:paddingTop="20dp"
+                            android:paddingRight="20dp"
+                            android:paddingBottom="10dp"
+                            app:address="@{user.address}" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#F3F1F1"
+                            android:paddingLeft="20dp"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp"
+                            android:text="WEBSITE"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                            android:textColor="#525050"
+                            android:textSize="16sp" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/lv_website"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#FFFFFF"
+                            android:orientation="vertical"
+                            android:paddingTop="20dp"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+                        <EditText
+                            android:id="@+id/edt_add_website"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/white"
+                            android:hint="Add another website"
+                            android:paddingLeft="20dp"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp"
+                            android:visibility="gone" />
+
+                        <RelativeLayout
+                            android:id="@+id/layoutwebsite"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#EEEEEE"
+                            android:paddingLeft="20dp"
+                            android:paddingTop="10dp"
+                            android:paddingRight="20dp"
+                            android:paddingBottom="10dp"
+                            android:visibility="gone">
+
+                            <Button
+                                android:id="@+id/btn_cancel_website"
+                                android:layout_width="40dp"
+                                android:layout_height="20dp"
+                                android:layout_alignParentRight="true"
+                                android:background="#FFFFFF"
+                                android:onClick="@{v->listener.onCancelWebsiteClicked()}"
+                                android:text="Cancel"
+                                android:textSize="10sp" />
+
+                            <Button
+                                android:id="@+id/btn_save_website"
+                                android:layout_width="40dp"
+                                android:layout_height="20dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_toLeftOf="@id/btn_cancel_website"
+                                android:background="#0B7EDA"
+                                android:onClick="@{v->listener.onSaveWebsiteClicked()}"
+                                android:text="Save"
+                                android:textColor="#FFFFFF"
+                                android:textSize="10sp" />
+                        </RelativeLayout>
+
+                        <TextView
+                            android:id="@+id/tv_add_website"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#FAF9F9"
+                            android:drawableRight="@drawable/ic_arrow_right"
+                            android:gravity="center"
+                            android:onClick="@{v->listener.onAddOtherWebsiteCliked()}"
+                            android:paddingLeft="20dp"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp"
+                            android:text="Add other website"
+                            android:textAppearance="@style/TextAppearance.AppCompat"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#F3F1F1"
+                            android:paddingLeft="20dp"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp"
+                            android:text="ADDRESS EMAIL"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                            android:textColor="#525050"
+                            android:textSize="16sp" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/lv_email"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#FFFFFF"
+                            android:orientation="vertical"
+                            android:paddingTop="20dp"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+                        <EditText
+
+                            android:id="@+id/edt_add_email"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/white"
+                            android:hint="Add another email"
+                            android:inputType="textEmailAddress"
+                            android:paddingLeft="20dp"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp"
+                            android:visibility="gone" />
+
+                        <RelativeLayout
+                            android:id="@+id/layout_email"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#EEEEEE"
+                            android:paddingLeft="20dp"
+                            android:paddingTop="10dp"
+                            android:paddingRight="20dp"
+                            android:paddingBottom="10dp"
+                            android:visibility="gone">
+
+                            <Button
+                                android:id="@+id/btn_cancel_email"
+                                android:layout_width="40dp"
+                                android:layout_height="20dp"
+                                android:layout_alignParentRight="true"
+                                android:background="#FFFFFF"
+                                android:onClick="@{v->listener.onCancelEmailClicked()}"
+                                android:text="Cancel"
+                                android:textSize="10sp" />
+
+                            <Button
+                                android:id="@+id/btn_save_email"
+                                android:layout_width="40dp"
+                                android:layout_height="20dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_toLeftOf="@id/btn_cancel_email"
+                                android:background="#0B7EDA"
+                                android:onClick="@{v->listener.onSaveEmailClicked()}"
+                                android:text="Save"
+                                android:textColor="#FFFFFF"
+                                android:textSize="10sp" />
+                        </RelativeLayout>
+
+                        <TextView
+                            android:id="@+id/tv_add_email"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#FAF9F9"
+                            android:drawableRight="@drawable/ic_arrow_right"
+                            android:gravity="center"
+                            android:onClick="@{v->listener.onAddOtherEmailClicked()}"
+                            android:paddingLeft="20dp"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp"
+                            android:text="Add other email"
+                            android:textAppearance="@style/TextAppearance.AppCompat"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="10dp"
+                        android:paddingRight="20dp">
+
+                        <Button
+                            android:id="@+id/btn_cancel"
+                            android:layout_width="60dp"
+                            android:layout_height="40dp"
+                            android:layout_alignParentRight="true"
+                            android:background="#FFFFFF"
+                            android:onClick="@{v->listener.onCancelClicked()}"
+                            android:text="Cancel"
+                            android:textSize="12sp" />
+
+                        <Button
+                            android:id="@+id/btn_save"
+                            android:layout_width="60dp"
+                            android:layout_height="40dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_toLeftOf="@id/btn_cancel"
+                            android:background="#0B7EDA"
+                            android:onClick="@{v->listener.onSaveClicked()}"
+                            android:text="Save"
+                            android:textColor="#FFFFFF" />
+                    </RelativeLayout>
+                </LinearLayout>
+            </androidx.core.widget.NestedScrollView>
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+        <ProgressBar
+            android:id="@+id/proress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone" />
+    </RelativeLayout>
+</layout>

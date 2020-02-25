@@ -1,0 +1,65 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+<!--    <style name="Theme.DesignDemo" parent="Base.Theme.DesignDemo" >-->
+<!--        <item name="android:windowDrawsSystemBarBackgrounds">true</item>-->
+<!--        <item name="android:statusBarColor">@android:color/transparent</item>-->
+<!--    </style>-->
+
+    <style name="Base.Theme.DesignDemo" parent="Theme.MaterialComponents.Light.NoActionBar" >
+        <item name="colorPrimary">#FFFFFF</item>
+        <item name="colorPrimaryDark">#FFFFFF</item>
+        <item name="alertDialogTheme">@style/Theme.AppCompat.Dialog.Alert</item>
+        <item name="colorAccent">#FF4081</item>
+
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+    </style>
+
+    <style name="Theme.Start" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">#03A9F4</item>
+        <item name="colorPrimaryDark">#03A9F4</item>
+        <item name="colorAccent">#FF4081</item>>
+    </style>
+
+
+    <style name="Theme.Spalsh" parent="Theme.Design.Light.NoActionBar">
+        <item name="colorPrimary">#FFFFFF</item>
+        <item name="colorPrimaryDark">#FFFFFF</item>
+        <item name="colorAccent">#FF4081</item>
+    </style>
+    <style name="Widget.CardContent" parent="android:Widget">
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">16dp</item>
+        <item name="android:paddingTop">24dp</item>
+        <item name="android:paddingBottom">24dp</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="ToolBarTheme.ToolBarStyle"    parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textColorPrimaryInverse">@android:color/white</item>
+    </style>
+
+    <style name="Theme.Infomation" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="colorPrimary">#673AB7</item>
+        <item name="colorPrimaryDark">@android:color/white</item>
+        <item name="colorAccent">#FF4081</item>
+    </style>
+
+    <style name="Theme.Message" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">#FFFFFF</item>
+        <item name="colorPrimaryDark">#2596F0</item>
+        <item name="colorAccent">#FF4081</item>
+    </style>
+
+
+    <style name="LoginTextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="boxStrokeWidth">2dp</item>
+        <item name="boxStrokeColor">#2596F0</item>
+    </style>
+
+    <style name="Theme.Alert" parent="Theme.MaterialComponents.Light">
+<!--        <item name="materialAlertDialogTitleTextStyle">@style/MaterialAlertDialog.MaterialComponents.Title.Text</item>-->
+    </style>
+</resources>

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="listener"
+            type="com.ducnv1106.message.view.fragment.signin.SignInListener" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+<!--            <TextView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:drawableLeft="@drawable/ic_email"-->
+<!--                android:drawablePadding="20dp"-->
+<!--                android:gravity="bottom"-->
+<!--                android:text="Email"-->
+<!--                android:textColor="#FFFFFF"-->
+<!--                android:textSize="20sp" />-->
+
+<!--            <EditText-->
+<!--                android:id="@+id/edt_email"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="5dp"-->
+<!--                android:layout_marginBottom="10dp"-->
+<!--                android:backgroundTint="@drawable/focused_edittext"-->
+<!--                android:hint="Email"-->
+<!--                android:maxLines="1"-->
+<!--                android:singleLine="true"-->
+<!--                android:textColor="#FFFFFF"-->
+<!--                android:textColorHint="#FFFFFF" />-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textinput_email"
+                app:boxBackgroundColor="#F7F4F4"
+                android:backgroundTintMode="multiply"
+                style="@style/LoginTextInputLayoutStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Email"
+                app:errorEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:textSize="18sp"
+                    android:id="@+id/edt_email"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="textEmailAddress"
+                    android:singleLine="true" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!--            <TextView-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:drawableLeft="@drawable/ic_password"-->
+            <!--                android:drawablePadding="20dp"-->
+            <!--                android:gravity="bottom"-->
+            <!--                android:text="Password"-->
+            <!--                android:textColor="#FFFFFF"-->
+            <!--                android:textSize="20sp" />-->
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textinput_password"
+                app:boxBackgroundColor="#F7F4F4"
+                android:backgroundTintMode="multiply"
+               style="@style/LoginTextInputLayoutStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Password"
+                app:counterEnabled="true"
+                app:counterMaxLength="15"
+                app:errorEnabled="true"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTintMode="multiply">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:textSize="18sp"
+                    android:id="@+id/edt_password"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="textPassword"
+                    android:singleLine="true" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!--            <EditText-->
+
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginTop="5dp"-->
+            <!--                android:layout_marginBottom="10dp"-->
+            <!--                android:backgroundTint="@drawable/focused_edittext"-->
+            <!--                android:hint="Password"-->
+            <!--                android:inputType="textPassword"-->
+            <!--                android:maxLines="1"-->
+            <!--                android:singleLine="true"-->
+            <!--                android:textColorHint="#FFFFFF" />-->
+
+            <com.google.android.material.button.MaterialButton
+                android:textSize="18sp"
+                android:id="@+id/btn_signin"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="#03A9F4"
+                android:onClick="@{v->listener.onSignInCliked()}"
+                android:text="Sign in"
+                android:textColor="#FFFFFF" />
+
+            <TextView
+                android:layout_marginBottom="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Forgot password?"
+                android:textColor="#03A9F4"
+                android:textSize="18sp" />
+        </LinearLayout>
+    </ScrollView>
+</layout>

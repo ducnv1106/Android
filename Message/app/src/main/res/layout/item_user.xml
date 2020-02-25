@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="isStatus"
+            type="java.lang.Boolean" />
+
+        <variable
+            name="item"
+            type="com.ducnv1106.message.model.User" />
+
+        <variable
+            name="isFriend"
+            type="java.lang.Boolean" />
+
+        <variable
+            name="Friend"
+            type="java.lang.Boolean" />
+
+        <variable
+            name="isMessage"
+            type="java.lang.Boolean" />
+
+        <variable
+            name="message"
+            type="com.ducnv1106.message.model.Message" />
+
+        <variable
+            name="listener"
+            type="com.ducnv1106.message.view.fragment.user.UserListener" />
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:onClick="@{v->listener.onUserClicked(item)}"
+        android:orientation="horizontal">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/img_avatar"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            app:thumb="@{item.avatar}">
+
+        </de.hdodenhof.circleimageview.CircleImageView>
+
+        <ImageView
+            android:id="@+id/img_status_online"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_alignBottom="@id/img_avatar"
+            android:layout_marginLeft="-10dp"
+            android:layout_toRightOf="@id/img_avatar"
+            android:src="@drawable/ic_status_online"
+            app:isStatusOnline="@{isStatus}"
+            app:visibilityOnline="@{item.status}" />
+
+        <ImageView
+            android:id="@+id/img_status_offline"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_alignBottom="@id/img_avatar"
+            android:layout_marginLeft="-10dp"
+            android:layout_toRightOf="@id/img_avatar"
+            android:src="@drawable/ic_status_ofline"
+            app:isStatusOffline="@{isStatus}"
+            app:visibilityOffline="@{item.status}" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@id/img_check_send"
+            android:layout_toRightOf="@id/img_avatar"
+            android:orientation="vertical">
+
+            <TextView
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:id="@+id/tv_username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center|left"
+                android:text="@{item.username}"
+                android:textSize="20sp"
+              android:textColor="#242424" />
+
+            <TextView
+
+                android:id="@+id/tv_message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:singleLine="true"
+                android:textSize="15sp"
+                app:isMessage="@{isMessage}"
+                app:tvMessage="@{message}"
+                app:tvUser="@{item}"/>
+
+        </LinearLayout>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/img_check_send"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            app:urlImg="@{item.avatar}"
+            app:message="@{message}"
+            app:user="@{item}"
+            app:isMessage="@{isMessage}"/>
+
+        <ImageView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/ic_add_friend2"
+            app:Friend="@{Friend}"
+            app:isFriend="@{isFriend}" />
+    </RelativeLayout>
+</layout>

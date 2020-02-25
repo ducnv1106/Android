@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="user"
+            type="com.ducnv1106.message.model.User" />
+
+        <variable
+            name="message"
+            type="com.ducnv1106.message.model.Message" />
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp">
+
+        <RelativeLayout
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:orientation="horizontal">
+           <androidx.cardview.widget.CardView
+               android:layout_marginRight="10dp"
+               android:layout_toLeftOf="@id/img_check_seen"
+               android:id="@+id/cardview"
+               app:cardCornerRadius="5dp"
+               android:elevation="5dp"
+               android:layout_width="250dp"
+               android:layout_height="200dp">
+            <ImageView
+                android:scaleType="fitXY"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_toLeftOf="@id/img_check_seen"
+                android:gravity="left|center"
+                android:textSize="16sp"
+                app:loadImage="@{message.message}" />
+           </androidx.cardview.widget.CardView>
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_alignBottom="@id/cardview"
+                android:layout_alignParentRight="true"
+                android:id="@+id/img_check_seen"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/ic_check_send_circle"
+                android:visibility="invisible" />
+
+        </RelativeLayout>
+    </RelativeLayout>
+</layout>

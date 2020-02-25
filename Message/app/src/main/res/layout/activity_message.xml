@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="user"
+            type="com.ducnv1106.message.model.User" />
+
+        <variable
+            name="listener"
+            type="com.ducnv1106.message.view.acitivity.message.MessageListener" />
+    </data>
+
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#F1EEEE"
+        android:orientation="vertical">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/bar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toobar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimaryDark"
+                android:theme="@style/ToolBarTheme.ToolBarStyle"
+                app:layout_scrollFlags="scroll|enterAlways|snap">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/img_avatar"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    app:thumb="@{user.avatar}" />
+
+                <TextView
+                    android:id="@+id/tv_username"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="10dp"
+                    android:gravity="center|left"
+                    android:onClick="@{v->listener.onProfileClicked()}"
+                    android:text="@{user.username}"
+                    android:textColor="#272727"
+                   android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textSize="18sp" />
+            </androidx.appcompat.widget.Toolbar>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/lv_message"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/layout_send"
+            android:layout_below="@id/bar_layout"
+            android:fitsSystemWindows="true"
+            android:orientation="vertical"
+            android:paddingBottom="110dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_anchor="@id/bar_layout"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
+
+        <RelativeLayout
+            android:id="@+id/layout_send"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom"
+            android:background="#FFFFFF"
+            android:padding="5dp">
+
+            <EditText
+                android:id="@+id/edt_message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="20dp"
+                android:layout_toLeftOf="@id/btn_send"
+                android:layout_toRightOf="@id/img_pic"
+                android:background="@drawable/custom_editext"
+                android:hint="Type a Message..."
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:textSize="20sp" />
+            <!--            <com.google.android.material.textfield.TextInputLayout-->
+            <!--                app:boxCornerRadiusBottomStart="20dp"-->
+            <!--                app:boxCornerRadiusBottomEnd="20dp"-->
+            <!--                app:boxCornerRadiusTopStart="20dp"-->
+            <!--                app:boxCornerRadiusTopEnd="20dp"-->
+            <!--                android:layout_marginRight="10dp"-->
+            <!--                android:layout_toLeftOf="@id/btn_send"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:hint="Type a Message...">-->
+
+            <!--                <com.google.android.material.textfield.TextInputEditText-->
+            <!--                    android:id="@+id/edt_message"-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="wrap_content" />-->
+            <!--            </com.google.android.material.textfield.TextInputLayout>-->
+            <ImageView
+                android:id="@+id/img_pic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:onClick="@{v->listener.onSendImgClicked()}"
+                android:src="@drawable/ic_image_pic" />
+
+            <ImageButton
+                android:id="@+id/btn_send"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/ic_send"
+                android:onClick="@{v->listener.onSendClicked()}" />
+
+        </RelativeLayout>
+
+        <ProgressBar
+            android:visibility="gone"
+            android:id="@+id/proress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>
